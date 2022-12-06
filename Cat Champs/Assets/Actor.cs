@@ -17,11 +17,15 @@ public abstract class Actor : MonoBehaviour
     // Takes care of moving the actor.
     public MotionController motionController;
 
-    private void Start()
+    // Takes care of attacking.
+    public AttackController attackController;
+
+    private void Awake()
     {
         health.Initialize(this);
         motionProvider.Initialize(this);
         motionController.Initialize(this);
+        attackController.Initialize(this);
     }
 
     protected void Update()
@@ -31,5 +35,8 @@ public abstract class Actor : MonoBehaviour
         
         // Move the actor.
         motionController.Move(direction);
+        
+        // Invoke the attack controller.
+        attackController.DoAttack();
     }
 }
