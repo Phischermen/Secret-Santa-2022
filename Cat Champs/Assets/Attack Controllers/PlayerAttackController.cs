@@ -12,6 +12,8 @@ public class PlayerAttackController : AttackController
     /* The player has attacks that they may trigger on command */
     public List<ActorAttack> activeAttacks = new List<ActorAttack>();
     
+    public event Action<Vector2> PerformedActiveAttack;
+    
     private Camera _mainCamera;
     [HideInInspector] public InputAction attack;
     [HideInInspector] public InputAction mouseAim;
@@ -45,7 +47,7 @@ public class PlayerAttackController : AttackController
         }
         if (attack.WasPerformedThisFrame())
         {
-            Debug.Log("Attack!");
+            PerformedActiveAttack?.Invoke(direction);
             foreach (var activeAttack in activeAttacks)
             {
                 activeAttack.PerformAttack(direction);

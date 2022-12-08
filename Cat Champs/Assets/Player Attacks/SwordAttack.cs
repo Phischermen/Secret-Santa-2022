@@ -13,6 +13,9 @@ public class SwordAttack : ActorAttack
     
     public Transform sword;
     public SpriteRenderer swordSprite;
+    
+    public float swingDuration = 0.5f;
+    public float growDuration = 0.2f;
 
     protected override void PerformAttackInternal(Vector2 direction)
     {
@@ -21,18 +24,20 @@ public class SwordAttack : ActorAttack
         // Rotate to the direction of the attack.
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         // Swing the sword to cover the arc.
+        DOTween.Kill(this);
         DOTween.Sequence(this)
             .Append(
-                transform.DOScale(1f, 0.05f)
+                transform.DOScale(1f, growDuration)
                     .From(0f))
-            .Join(
-                sword.DOLocalRotate(new Vector3(0, 0, arc), 0.1f)
+            .Append(
+                transform.DOScale(0f, growDuration)
+                    .From(1f))
+            .Insert( atPosition: 0f,
+                sword.DOLocalRotate(new Vector3(0, 0, arc), swingDuration)
                     .From(new Vector3(0, 0, -arc))
                     .SetRelative(true)
                     .OnComplete(() => { swordSprite.enabled = false; }))
-            .Append(
-                transform.DOScale(0f, 0.05f)
-                    .From(1f))
+            
             .Play();
         // Perform a circle check to see if we hit anything
         var size = Physics2D.OverlapCircleNonAlloc(transform.position, range, _results);
