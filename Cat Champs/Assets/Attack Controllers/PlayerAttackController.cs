@@ -21,6 +21,7 @@ public class PlayerAttackController : AttackController
     protected override void InitializeInternal()
     {
         _mainCamera = Camera.main;
+        target = null;
         foreach (var passiveAttack in passiveAttacks)
         {
             passiveAttack.attacker = owner;

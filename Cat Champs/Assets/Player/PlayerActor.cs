@@ -9,8 +9,9 @@ public class PlayerActor : Actor
 
     public PlayerAnimator playerAnimator;
 
-    private void Start()
+    protected new void Start()
     {
+        base.Start();
         _controls = new PlayerControls();
         _controls.Enable();
 

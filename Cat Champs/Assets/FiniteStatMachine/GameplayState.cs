@@ -10,7 +10,10 @@ public class GameplayState : FiniteStateMachine.State
 
     protected override void BeginState()
     {
-        FiniteStateMachineUtility.LoadSceneIfNotLoaded(Scenum.GameScene);
+        if (!FiniteStateMachineUtility.LoadSceneIfNotLoaded(Scenum.GameScene))
+        {
+            SetupGameScene();
+        }
     }
 
     protected override void EndState()
@@ -29,11 +32,39 @@ public class GameplayState : FiniteStateMachine.State
 
     protected override void SceneManagerOnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        switch (scene.buildIndex)
+        {
+            case Scenum.GameScene:
+                SetupGameScene();
+                break;
+        }
+    }
+
+    private void SetupGameScene()
+    {
+        _playerActor = GameObject.FindWithTag("Player").GetComponent<PlayerActor>();
+        _playerActor.health.HealthDepleted += PlayerActorOnDeath;
     }
 
     protected override void SceneManagerOnSceneUnloaded(Scene scene)
     {
-        
+        switch (scene.buildIndex)
+        {
+            case Scenum.GameScene:
+                _playerActor = null;
+                break;
+        }
+    }
+
+    private static PlayerActor _playerActor;
+
+    public static PlayerActor GetPlayer()
+    {
+        return _playerActor;
+    }
+
+    private void PlayerActorOnDeath(Actor obj)
+    {
+        Debug.Log("Player died");
     }
 }

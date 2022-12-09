@@ -9,8 +9,8 @@ public class LerpedMotionController : MotionController
     public Vector2 TargetVelocity { get; private set; }
     protected override void MoveInternal(Vector2 direction)
     {
-        TargetVelocity = direction * Speed;
-        Velocity = Vector2.Lerp(Velocity, TargetVelocity, Time.deltaTime * Acceleration);
+        TargetVelocity = direction * GetSpeed.Invoke();
+        Velocity = Vector2.Lerp(Velocity, TargetVelocity, Time.deltaTime * GetAcceleration.Invoke());
         Translate(Velocity * Time.deltaTime);
     }
 }

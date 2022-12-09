@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class MotionController : MonoBehaviour
 {
-    [HideInInspector] public Actor owner;
-    protected float Speed => owner.stats.speed;
-    protected float Acceleration => owner.stats.acceleration;
+    [HideInInspector] public Transform owner;
+    public Func<float> GetSpeed = () => 1f;
+    public Func<float> GetAcceleration = () => 1f;
     
-    public void Initialize(Actor owner)
+    public void Initialize(Transform owner)
     {
         this.owner = owner;
     }

@@ -20,13 +20,15 @@ public abstract class Actor : MonoBehaviour
     // Takes care of attacking.
     public AttackController attackController;
 
-    private void Awake()
+    protected void Start()
     {
         health.Initialize(this);
-        motionProvider.Initialize(this);
-        motionController.Initialize(this);
+        motionController.Initialize(transform);
+        motionController.GetSpeed = () => stats.speed;
+        motionController.GetAcceleration = () => stats.acceleration;
         attackController.Initialize(this);
     }
+    
 
     protected void Update()
     {

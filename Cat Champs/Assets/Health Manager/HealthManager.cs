@@ -13,8 +13,8 @@ public class HealthManager : MonoBehaviour
     public bool iFrameIsEven => _iframes % 2 == 0; // Used to flash the sprite when invulnerable.
     public int CurrentHealth { get; private set; }
     
-    protected event Action<HealthManager, int> OnDamageTaken;
-    protected event Action<Actor> HealthDepleted;
+    public event Action<HealthManager, int> OnDamageTaken;
+    public event Action<Actor> HealthDepleted;
     
     public void Initialize(Actor owner)
     {

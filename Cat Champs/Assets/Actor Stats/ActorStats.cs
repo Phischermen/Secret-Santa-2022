@@ -10,4 +10,5 @@ public class ActorStats : ScriptableObject
     public float acceleration;
     public float attackFrequencyMod = 1f;
     public float attackDamageMod = 1f;
+    public float attackRangeMod = 1f;
 }

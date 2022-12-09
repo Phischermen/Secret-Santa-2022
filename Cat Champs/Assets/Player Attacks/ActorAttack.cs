@@ -8,8 +8,6 @@ public abstract class ActorAttack : MonoBehaviour
     [HideInInspector] public Actor attacker;
     public float FrequencyMod => attacker.stats.attackFrequencyMod;
     public float attackFrequency;
-    public float DamageMod => attacker.stats.attackDamageMod;
-    public float attackDamage;
     protected float cooldown = 0;
     
     public event Action AttackPerformed;

@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 702239027103613028}
   - component: {fileID: 702239027103613029}
   - component: {fileID: 702239027103613027}
+  - component: {fileID: 1618349665258791641}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +108,7 @@ MonoBehaviour:
   motionProvider: {fileID: 702239027103613028}
   motionController: {fileID: 702239027103613029}
   attackController: {fileID: 702239027103613027}
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 1618349665258791641}
 --- !u!114 &702239027103613049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4d3cc603aeec044b5272aa59f855c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
   movement:
     m_Name: Movement
     m_Type: 0
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  target: {fileID: 0}
   passiveAttacks: []
   activeAttacks:
   - {fileID: 702239027361616560}
@@ -190,6 +191,19 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!114 &1618349665258791641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702239027103613050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140e9ed6f68f93b4a9e81851630c327d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 702239027103613031}
 --- !u!1 &702239027361616561
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,13 +250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  attackFrequency: 1
-  attackDamage: 1
+  attackFrequency: 0.1
   range: 1
   arc: 45
   damage: 10
   sword: {fileID: 4695573249181089378}
   swordSprite: {fileID: 702239027762907489}
+  swingDuration: 0.5
+  growDuration: 0.2
 --- !u!1 &702239027762907491
 GameObject:
   m_ObjectHideFlags: 0
