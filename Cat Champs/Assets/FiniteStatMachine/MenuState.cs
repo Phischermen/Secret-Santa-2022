@@ -9,12 +9,12 @@ public class MenuState : FiniteStateMachine.State
 {
     protected override void BeginState()
     {
-        FiniteStateMachineUtility.LoadSceneIfNotLoaded(Scenum.MenuScene);
+        LoadSceneIfNotLoaded(Scenum.MenuScene).Then(SetupMainMenuScene);
     }
 
     protected override void EndState()
     {
-        FiniteStateMachineUtility.UnloadIfLoaded(Scenum.MenuScene);
+        UnloadSceneIfLoaded(Scenum.MenuScene);
     }
     
     public override FiniteStateMachine.State DoState()
@@ -22,26 +22,16 @@ public class MenuState : FiniteStateMachine.State
         return nextState;
     }
 
-    protected override void SceneManagerOnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void SetupMainMenuScene()
     {
-        switch (scene.buildIndex)
+        foreach (var button in Object.FindObjectsOfType<Button>())
         {
-            case Scenum.MenuScene:
-                foreach (var button in Object.FindObjectsOfType<Button>())
-                {
-                    switch (button.name)
-                    {
-                        case "PlayButton":
-                            button.onClick.AddListener(() => nextState = new GameplayState());
-                            break;
-                    }
-                }
-                break;
+            switch (button.name)
+            {
+                case "PlayButton":
+                    button.onClick.AddListener(() => nextState = new GameplayState(Scenum.Arena, 0));
+                    break;
+            }
         }
-    }
-
-    protected override void SceneManagerOnSceneUnloaded(Scene scene)
-    {
-        
     }
 }

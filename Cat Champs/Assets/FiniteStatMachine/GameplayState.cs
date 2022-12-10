@@ -4,40 +4,41 @@ using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static FiniteStateMachine;
 
-public class GameplayState : FiniteStateMachine.State
+public class GameplayState : State
 {
-
+    private int _arenaSceneIdx;
+    private int _character;
+    
+    public GameplayState(int arenaSceneIdx, int character)
+    {
+        _arenaSceneIdx = arenaSceneIdx;
+        _character = character;
+    }
     protected override void BeginState()
     {
-        if (!FiniteStateMachineUtility.LoadSceneIfNotLoaded(Scenum.GameScene))
+        LoadSceneIfNotLoaded(_arenaSceneIdx).Then(() =>
         {
-            SetupGameScene();
-        }
+            _arena = Object.FindObjectOfType<Arena>();
+            LoadSceneIfNotLoaded(Scenum.GameScene).Then(SetupGameScene);
+        });
     }
 
     protected override void EndState()
     {
-        FiniteStateMachineUtility.UnloadIfLoaded(Scenum.GameScene);
+        UnloadSceneIfLoaded(Scenum.GameScene);
+        _playerActor = null;
     }
 
-    public override FiniteStateMachine.State DoState()
+    public override State DoState()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             return new MenuState();
         }
+        if (_arena) _arena.ControlSpawning();
         return nextState;
-    }
-
-    protected override void SceneManagerOnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        switch (scene.buildIndex)
-        {
-            case Scenum.GameScene:
-                SetupGameScene();
-                break;
-        }
     }
 
     private void SetupGameScene()
@@ -46,14 +47,10 @@ public class GameplayState : FiniteStateMachine.State
         _playerActor.health.HealthDepleted += PlayerActorOnDeath;
     }
 
-    protected override void SceneManagerOnSceneUnloaded(Scene scene)
+    private static Arena _arena;
+    public static Arena GetArena()
     {
-        switch (scene.buildIndex)
-        {
-            case Scenum.GameScene:
-                _playerActor = null;
-                break;
-        }
+        return _arena;
     }
 
     private static PlayerActor _playerActor;

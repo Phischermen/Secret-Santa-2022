@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Spider Stats
   m_EditorClassIdentifier: 
   health: 1
-  speed: 0.1
+  speed: 7.01
   acceleration: 1
   attackFrequencyMod: 1
   attackDamageMod: 1
-  attackRangeMod: 1
+  attackRangeMod: 10

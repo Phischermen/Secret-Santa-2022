@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cb2ac3cc9b3e44196dea6bc31f3d62, type: 3}
   m_Name: Web Stats
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 6
   acceleration: 1
   damage: 1
   debuff: {fileID: 11400000, guid: 09a18667e99d5dc4d9e281a0dbb99915, type: 2}

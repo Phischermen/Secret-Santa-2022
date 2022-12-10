@@ -46,7 +46,7 @@ public class FiniteStateMachine : MonoBehaviour
             {
                 if (arg0.name != "EmptyScene") return;
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("EmptyScene"));
-                CurrentState = new GameplayState();
+                CurrentState = new GameplayState(Scenum.Arena, 0);
             };
         }
     }
@@ -71,8 +71,8 @@ public class FiniteStateMachine : MonoBehaviour
 
         public void BeginStateInternal()
         {
-            SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
-            SceneManager.sceneUnloaded += SceneManagerOnSceneUnloaded;
+            // SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
+            // SceneManager.sceneUnloaded += SceneManagerOnSceneUnloaded;
             nextState = this;
             BeginState();
         }
@@ -80,14 +80,75 @@ public class FiniteStateMachine : MonoBehaviour
         public void EndStateInternal()
         {
             EndState();
-            SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
-            SceneManager.sceneUnloaded -= SceneManagerOnSceneUnloaded;
+            // SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
+            // SceneManager.sceneUnloaded -= SceneManagerOnSceneUnloaded;
+        }
+
+        protected SceneLoadHandle LoadSceneIfNotLoaded(int buildIdx)
+        {
+            if (!SceneManager.GetSceneByBuildIndex(buildIdx).isLoaded)
+            {
+                SceneManager.LoadScene(buildIdx, LoadSceneMode.Additive);
+            }
+            return new SceneLoadHandle(buildIdx, true);
+        }
+
+        protected SceneLoadHandle UnloadSceneIfLoaded(int buildIdx)
+        {
+            if (SceneManager.GetSceneByBuildIndex(buildIdx).isLoaded)
+            {
+                SceneManager.UnloadSceneAsync(buildIdx);
+            }
+
+            return new SceneLoadHandle(buildIdx, false);
+        }
+        protected class SceneLoadHandle
+        {
+            private readonly int _buildIdx;
+            private readonly bool _loadHandle;
+            public SceneLoadHandle(int buildIdx, bool loadHandle)
+            {
+                _buildIdx = buildIdx;
+                _loadHandle = loadHandle;
+            }
+
+            public void Then(Action action)
+            {
+                if (SceneManager.GetSceneByBuildIndex(_buildIdx).isLoaded)
+                {
+                    action.Invoke();
+                } else
+                {
+                    if (_loadHandle) ListenToLoad(action);
+                    else ListenToUnload(action);
+                }
+            }
+
+            private void ListenToLoad(Action action)
+            {
+                SceneManager.sceneLoaded += SceneLoaded;
+
+                void SceneLoaded(Scene scene, LoadSceneMode _)
+                {
+                    if (scene.buildIndex == _buildIdx) action.Invoke();
+                    SceneManager.sceneLoaded -= SceneLoaded;
+                }
+            }
+
+            private void ListenToUnload(Action action)
+            {
+                SceneManager.sceneUnloaded += SceneUnloaded;
+
+                void SceneUnloaded(Scene scene)
+                {
+                    if (scene.buildIndex == _buildIdx) action.Invoke();
+                    SceneManager.sceneUnloaded -= SceneUnloaded;
+                }
+            }
         }
 
         protected abstract void BeginState();
         protected abstract void EndState();
         public abstract State DoState();
-        protected abstract void SceneManagerOnSceneLoaded(Scene scene, LoadSceneMode mode);
-        protected abstract void SceneManagerOnSceneUnloaded(Scene scene);
     }
 }
