@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 702239027103613029}
   - component: {fileID: 702239027103613027}
   - component: {fileID: 1618349665258791641}
+  - component: {fileID: 6264281600175177795}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  velocity: {x: 0, y: 0}
 --- !u!114 &702239027103613027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +206,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 702239027103613031}
+--- !u!70 &6264281600175177795
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702239027103613050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.92, y: 1.53}
+  m_Direction: 0
 --- !u!1 &702239027361616561
 GameObject:
   m_ObjectHideFlags: 0

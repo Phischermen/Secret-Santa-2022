@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4126626931379208988}
   - component: {fileID: 3513882274514422441}
   - component: {fileID: 6947425677269704725}
+  - component: {fileID: 4330482380516854335}
   m_Layer: 0
   m_Name: Web
   m_TagString: Untagged
@@ -130,3 +131,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  velocity: {x: 0, y: 0}
+--- !u!58 &4330482380516854335
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085188805004290339}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

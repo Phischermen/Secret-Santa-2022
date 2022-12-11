@@ -15,7 +15,7 @@ public abstract class MotionController : MonoBehaviour
         this.owner = owner;
     }
     
-    protected void Translate(Vector2 translation) => owner.transform.Translate(new Vector3(translation.x, translation.y, 0));
+    protected void Translate(Vector2 translation) => owner.transform.Translate(new Vector3(translation.x, translation.y, 0), Space.World);
     
     public void Move(Vector2 direction)
     {
