@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Arenas/Arena.unity
     guid: 8f19f643aaebbcd4a838aa286eaae0c2
+  - enabled: 1
+    path: Assets/UI/PlayerUI.unity
+    guid: 00ef5765280a1a049aebd3eb6ba3ea1f
+  - enabled: 1
+    path: Assets/Scenes/GameoverScene.unity
+    guid: 48d1ad571fdfb8349b40f76fdef0da75
   m_configObjects: {}

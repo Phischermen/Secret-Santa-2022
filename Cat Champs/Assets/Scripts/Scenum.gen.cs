@@ -6,4 +6,6 @@ public static class Scenum
 	public const int MenuScene = 1;
 	public const int GameScene = 2;
 	public const int Arena = 3;
+	public const int PlayerUI = 4;
+	public const int GameoverScene = 5;
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
     [HideInInspector] public Actor attacker;
@@ -17,6 +18,7 @@ public class Projectile : MonoBehaviour
         motionController.Initialize(transform);
         motionController.GetSpeed = () => projectileStats.speed;
         motionController.GetAcceleration = () => projectileStats.acceleration;
+        motionController.HitEdge += _ => Destroy(gameObject);
     }
 
     public void Update()
@@ -31,11 +33,13 @@ public class Projectile : MonoBehaviour
             var playerActor = col.gameObject.GetComponent<PlayerActor>();
             // todo apply debuff
             playerActor.health.TakeDamage((int)(projectileStats.damage * attacker.stats.attackDamageMod));
+            Destroy(gameObject);
         }
         else if (col.TryGetComponent(out Actor actor))
         {
             // todo apply debuff
             actor.health.TakeDamage((int)(projectileStats.damage * attacker.stats.attackDamageMod));
+            Destroy(gameObject);
         }
     }
 }

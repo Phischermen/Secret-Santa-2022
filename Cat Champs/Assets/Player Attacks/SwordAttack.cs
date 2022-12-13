@@ -46,13 +46,14 @@ public class SwordAttack : ActorAttack
             var hit = _results[i];
             // Check if the hit object is an enemy
             var enemy = hit.GetComponent<Actor>();
-            if (enemy != null)
+            if (enemy != null && enemy != attacker)
             {
                 // Check if the enemy is within the arc
                 var angle = Vector2.Angle(direction, hit.transform.position - transform.position);
                 if (angle < arc)
                 {
                     // Hit the enemy
+                    Debug.Log("Hit " + enemy.name);
                     enemy.health.TakeDamage(damage);
                 }
             }

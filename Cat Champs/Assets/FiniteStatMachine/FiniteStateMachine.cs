@@ -31,6 +31,7 @@ public class FiniteStateMachine : MonoBehaviour
         var go = new GameObject("FiniteStateMachine");
         _inst = go.AddComponent<FiniteStateMachine>();
         DontDestroyOnLoad(go);
+        Debug.Log("FiniteStateMachine initialized.");
         
 #if UNITY_EDITOR
         var continueWithLoad = !EditorPrefs.GetBool("disableFiniteStateMachine");
@@ -112,6 +113,7 @@ public class FiniteStateMachine : MonoBehaviour
                 _loadHandle = loadHandle;
             }
 
+            private Action _action;
             public void Then(Action action)
             {
                 if (SceneManager.GetSceneByBuildIndex(_buildIdx).isLoaded)
@@ -119,6 +121,7 @@ public class FiniteStateMachine : MonoBehaviour
                     action.Invoke();
                 } else
                 {
+                    _action = action;
                     if (_loadHandle) ListenToLoad(action);
                     else ListenToUnload(action);
                 }
@@ -127,10 +130,14 @@ public class FiniteStateMachine : MonoBehaviour
             private void ListenToLoad(Action action)
             {
                 SceneManager.sceneLoaded += SceneLoaded;
-
-                void SceneLoaded(Scene scene, LoadSceneMode _)
+            }
+            
+            void SceneLoaded(Scene scene, LoadSceneMode _)
+            {
+                Debug.Log($"Scene loaded: {scene.name}");
+                if (scene.buildIndex == _buildIdx)
                 {
-                    if (scene.buildIndex == _buildIdx) action.Invoke();
+                    _action.Invoke();
                     SceneManager.sceneLoaded -= SceneLoaded;
                 }
             }
@@ -138,10 +145,13 @@ public class FiniteStateMachine : MonoBehaviour
             private void ListenToUnload(Action action)
             {
                 SceneManager.sceneUnloaded += SceneUnloaded;
-
-                void SceneUnloaded(Scene scene)
+            }
+            
+            void SceneUnloaded(Scene scene)
+            {
+                if (scene.buildIndex == _buildIdx)
                 {
-                    if (scene.buildIndex == _buildIdx) action.Invoke();
+                    _action.Invoke();
                     SceneManager.sceneUnloaded -= SceneUnloaded;
                 }
             }

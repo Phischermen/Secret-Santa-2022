@@ -29,6 +29,7 @@ public abstract class AttackController : MonoBehaviour
 
     protected bool InRange(float range)
     {
+        if (target == null) return false;
         return Vector3.Distance(target.transform.position, transform.position) <= range;
     }
 }

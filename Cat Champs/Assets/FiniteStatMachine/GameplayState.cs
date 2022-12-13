@@ -16,28 +16,47 @@ public class GameplayState : State
         _arenaSceneIdx = arenaSceneIdx;
         _character = character;
     }
+    
+    private GameOverUI _gameOverUI;
     protected override void BeginState()
     {
         LoadSceneIfNotLoaded(_arenaSceneIdx).Then(() =>
         {
             _arena = Object.FindObjectOfType<Arena>();
-            LoadSceneIfNotLoaded(Scenum.GameScene).Then(SetupGameScene);
+            LoadSceneIfNotLoaded(Scenum.PlayerUI).Then(() =>
+            {
+                LoadSceneIfNotLoaded(Scenum.GameScene).Then(SetupGameScene);
+            });
+        });
+        LoadSceneIfNotLoaded(Scenum.GameoverScene).Then(() =>
+        {
+            _gameOverUI = Object.FindObjectOfType<GameOverUI>();
+            _gameOverUI.Initialize(this);
         });
     }
 
     protected override void EndState()
     {
         UnloadSceneIfLoaded(Scenum.GameScene);
+        UnloadSceneIfLoaded(Scenum.PlayerUI);
+        UnloadSceneIfLoaded(Scenum.GameoverScene);
         _playerActor = null;
+        _arena = null;
+        foreach (var gameObject in GameObject.FindGameObjectsWithTag("DestroyOnReplay"))
+        {
+            Object.Destroy(gameObject);
+        }
     }
 
+    private bool _paused;
+    private bool _gameOver;
     public override State DoState()
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             return new MenuState();
         }
-        if (_arena) _arena.ControlSpawning();
+        if (!_paused && !_gameOver && _arena) _arena.ControlSpawning();
         return nextState;
     }
 
@@ -45,6 +64,8 @@ public class GameplayState : State
     {
         _playerActor = GameObject.FindWithTag("Player").GetComponent<PlayerActor>();
         _playerActor.health.HealthDepleted += PlayerActorOnDeath;
+
+        Object.FindObjectOfType<PlayerUI>().Initialize(_playerActor);
     }
 
     private static Arena _arena;
@@ -62,6 +83,17 @@ public class GameplayState : State
 
     private void PlayerActorOnDeath(Actor obj)
     {
-        Debug.Log("Player died");
+        _gameOverUI.Show();
+    }
+
+    public void Replay()
+    {
+        // Reload this state
+        nextState = new GameplayState(_arenaSceneIdx, _character);
+    }
+
+    public void GoToMainMenu()
+    {
+        nextState = new MenuState();
     }
 }

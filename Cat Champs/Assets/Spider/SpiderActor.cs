@@ -9,6 +9,12 @@ public class SpiderActor : Actor
     {
         base.Start();
         motionController.HitEdge += MotionController_HitEdge;
+        health.HealthDepleted += Health_HealthDepleted;
+    }
+
+    private void Health_HealthDepleted(Actor obj)
+    {
+        Destroy(obj.gameObject);
     }
 
     private void MotionController_HitEdge(Vector2 hitPosition)
