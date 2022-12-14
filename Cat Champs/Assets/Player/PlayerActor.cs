@@ -24,4 +24,21 @@ public class PlayerActor : Actor
         ((PlayerAttackController)attackController).PerformedActiveAttack +=
             direction => playerAnimator.FlipBasedOnDirection(direction);
     }
+
+    public event Action<int> XpChanged;
+    public event Action<PlayerActor> LevelUp;
+    public int level = 1;
+    public int experience = 0;
+    private int _experienceToNextLevel = 100;
+    public void CollectExperience(int points)
+    {
+        experience += points;
+        if (experience >= _experienceToNextLevel)
+        {
+            experience -= _experienceToNextLevel;
+            level++;
+            LevelUp?.Invoke(this);
+        }
+        XpChanged?.Invoke(experience);
+    }
 }

@@ -18,6 +18,7 @@ public class GameplayState : State
     }
     
     private GameOverUI _gameOverUI;
+    private UpgradeUI _upgradeUI;
     protected override void BeginState()
     {
         LoadSceneIfNotLoaded(_arenaSceneIdx).Then(() =>
@@ -33,6 +34,11 @@ public class GameplayState : State
             _gameOverUI = Object.FindObjectOfType<GameOverUI>();
             _gameOverUI.Initialize(this);
         });
+        LoadSceneIfNotLoaded(Scenum.UpgradeScene).Then(() =>
+        {
+            _upgradeUI = Object.FindObjectOfType<UpgradeUI>();
+            _upgradeUI.Initialize(this);
+        });
     }
 
     protected override void EndState()
@@ -40,6 +46,7 @@ public class GameplayState : State
         UnloadSceneIfLoaded(Scenum.GameScene);
         UnloadSceneIfLoaded(Scenum.PlayerUI);
         UnloadSceneIfLoaded(Scenum.GameoverScene);
+        UnloadSceneIfLoaded(Scenum.UpgradeScene);
         _playerActor = null;
         _arena = null;
         foreach (var gameObject in GameObject.FindGameObjectsWithTag("DestroyOnReplay"))
@@ -64,6 +71,7 @@ public class GameplayState : State
     {
         _playerActor = GameObject.FindWithTag("Player").GetComponent<PlayerActor>();
         _playerActor.health.HealthDepleted += PlayerActorOnDeath;
+        _playerActor.LevelUp += PlayerActorOnLevelUp;
 
         Object.FindObjectOfType<PlayerUI>().Initialize(_playerActor);
     }
@@ -85,6 +93,23 @@ public class GameplayState : State
     {
         _gameOverUI.Show();
     }
+    
+    private void PlayerActorOnLevelUp(PlayerActor player)
+    {
+        var upgrades = ((PlayerAttackController)player.attackController).GetUpgradesFromAllAttacks();
+        // Pick four random upgrades to show player.
+        var randomUpgrades = new List<Upgrade>();
+        for (var i = 0; i < 4; i++)
+        {
+            var randomIndex = Random.Range(0, upgrades.Count);
+            randomUpgrades.Add(upgrades[randomIndex]);
+            upgrades.RemoveAt(randomIndex);
+            if (upgrades.Count == 0) break;
+        }
+        _upgradeUI.ShowUpgradeUI(randomUpgrades);
+        _paused = true;
+        Time.timeScale = 0;
+    }
 
     public void Replay()
     {
@@ -95,5 +120,13 @@ public class GameplayState : State
     public void GoToMainMenu()
     {
         nextState = new MenuState();
+    }
+
+    public void UpgradeChosen(Upgrade upgrade)
+    {
+        _paused = false;
+        Time.timeScale = 1;
+        upgrade.UpgradeChosen();
+        _upgradeUI.HideUpgradeUI();
     }
 }

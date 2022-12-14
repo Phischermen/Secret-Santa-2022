@@ -14,11 +14,12 @@ public class PlayerUI : MonoBehaviour
         _playerActor = playerActor;
         _healthManager = _playerActor.health;
         _healthManager.OnDamageTaken += (_,_) => UpdateUI();
+        _playerActor.XpChanged += (_) => UpdateUI();
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        uiText.text = $"<color=red>Health : {_healthManager.CurrentHealth}</color>";
+        uiText.text = $"<color=red>Health : {_healthManager.CurrentHealth}</color>\n<color=yellow>Xp : {_playerActor.experience}</color>";
     }
 }

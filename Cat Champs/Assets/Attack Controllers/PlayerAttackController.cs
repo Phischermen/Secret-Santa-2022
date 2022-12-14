@@ -55,4 +55,25 @@ public class PlayerAttackController : AttackController
             }
         }
     }
+
+    public List<Upgrade> GetUpgradesFromAllAttacks()
+    {
+        var upgrades = new List<Upgrade>();
+        foreach (var activeAttack in activeAttacks)
+        {
+            if (activeAttack is IUpgrades upgrades1)
+            {
+                upgrades.AddRange(upgrades1.GetUpgrades());
+            }
+        }
+
+        foreach (var passiveAttack in passiveAttacks)
+        {
+            if (passiveAttack is IUpgrades upgrades1)
+            {
+                upgrades.AddRange(upgrades1.GetUpgrades());
+            }
+        }
+        return upgrades;
+    }
 }

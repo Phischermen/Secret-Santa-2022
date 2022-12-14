@@ -8,4 +8,5 @@ public static class Scenum
 	public const int Arena = 3;
 	public const int PlayerUI = 4;
 	public const int GameoverScene = 5;
+	public const int UpgradeScene = 6;
 }

@@ -35,6 +35,7 @@ public class HealthManager : MonoBehaviour
         {
             CurrentHealth = 0;
             HealthDepleted?.Invoke(owner);
+            HealthDepletedInternal();
         }
     }
     
@@ -47,5 +48,10 @@ public class HealthManager : MonoBehaviour
     {
         if (_iframes > 0)
             _iframes--;
+    }
+    
+    protected virtual void HealthDepletedInternal()
+    {
+        // Do something when health is depleted.
     }
 }
