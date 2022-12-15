@@ -9,21 +9,28 @@ public class SwordAttack : ActorAttack, IUpgrades
     public float range = 1.0f;
     public float arc = 45.0f;
     public int damage = 10;
-    protected Collider2D[] _results = new Collider2D[10];
+    protected Collider2D[] _results = new Collider2D[100];
+    public LayerMask layerMask;
 
     public Transform sword;
     public SpriteRenderer swordSprite;
 
     public float swingDuration = 0.5f;
     public float growDuration = 0.2f;
+    
+    public TrailRenderer trail;
 
     private void Start()
     {
         InitializeUpgrades();
+        trail.time = swingDuration;
     }
 
     protected override void PerformAttackInternal(Vector2 direction)
     {
+        trail.emitting = true;
+        trail.widthMultiplier = range * 0.5f;
+        trail.transform.localPosition = new Vector3(0, range * 0.5f, 0);
         // Animate the sword with DoTween.
         swordSprite.enabled = true;
         // Rotate to the direction of the attack.
@@ -34,17 +41,18 @@ public class SwordAttack : ActorAttack, IUpgrades
             .Append(
                 transform.DOScale(1f, growDuration)
                     .From(0f))
+            .AppendInterval(swingDuration - growDuration * 2)
             .Append(
                 transform.DOScale(0f, growDuration)
                     .From(1f))
             .Insert(atPosition: 0f,
-                sword.DOLocalRotate(new Vector3(0, 0, arc), swingDuration)
+                sword.DOLocalRotate(new Vector3(0, 0, arc * 2), swingDuration, RotateMode.LocalAxisAdd)
                     .From(new Vector3(0, 0, -arc))
                     .SetRelative(true)
-                    .OnComplete(() => { swordSprite.enabled = false; }))
+                    .OnComplete(() => { swordSprite.enabled = trail.emitting = false; }))
             .Play();
         // Perform a circle check to see if we hit anything
-        var size = Physics2D.OverlapCircleNonAlloc(transform.position, range, _results);
+        var size = Physics2D.OverlapCircleNonAlloc(transform.position, range, _results, layerMask);
         for (int i = 0; i < size; i++)
         {
             var hit = _results[i];
@@ -56,9 +64,15 @@ public class SwordAttack : ActorAttack, IUpgrades
                 var angle = Vector2.Angle(direction, hit.transform.position - transform.position);
                 if (angle < arc)
                 {
+                    Debug.DrawLine(transform.position, hit.transform.position, Color.green, 1f);
                     // Hit the enemy
-                    Debug.Log("Hit " + enemy.name);
+                    //Debug.Log("Hit " + enemy.name);
                     enemy.health.TakeDamage(damage);
+                }
+                else
+                {
+                    Debug.DrawLine(transform.position, hit.transform.position, Color.red, 1f);
+                    //Debug.Log("Missed " + angle);
                 }
             }
         }

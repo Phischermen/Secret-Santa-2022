@@ -29,6 +29,7 @@ public class HealthManager : MonoBehaviour
         
         CurrentHealth -= damage;
         OnDamageTaken?.Invoke(this, damage);
+        TextPopup.CreateForDamage(damage, 100, owner.transform.position);
         _iframes = 30;
 
         if (CurrentHealth <= 0)

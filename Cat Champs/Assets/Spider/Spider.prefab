@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6851796755458095439}
   - component: {fileID: 1186447233178020285}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WebAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 554790940153298454}
   - component: {fileID: 6555893140098901937}
   - component: {fileID: 2406747361169102279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spider
   m_TagString: DestroyOnReplay
   m_Icon: {fileID: 0}
@@ -128,8 +128,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.46354485, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0927528c6af3b724e907ad106a090560, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -233,7 +233,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.59
 --- !u!50 &2406747361169102279
 Rigidbody2D:
   serializedVersion: 4
@@ -253,5 +253,5 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
