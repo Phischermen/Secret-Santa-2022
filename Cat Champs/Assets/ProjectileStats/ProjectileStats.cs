@@ -9,4 +9,8 @@ public class ProjectileStats : ScriptableObject
     public float acceleration;
     public int damage;
     public ActorStats debuff;
+    public int maxDebuffStacks;
+    public float debuffDuration;
+    public float lifespan;
+    public bool canBeClearedBySword;
 }

@@ -19,6 +19,8 @@ public class Projectile : MonoBehaviour
         motionController.GetSpeed = () => projectileStats.speed;
         motionController.GetAcceleration = () => projectileStats.acceleration;
         motionController.HitEdge += _ => Destroy(gameObject);
+        
+        Destroy(gameObject, projectileStats.lifespan);
     }
 
     public void Update()
@@ -31,14 +33,14 @@ public class Projectile : MonoBehaviour
         if (targetingPlayer && col.CompareTag("Player"))
         {
             var playerActor = col.gameObject.GetComponent<PlayerActor>();
-            // todo apply debuff
-            playerActor.health.TakeDamage((int)(projectileStats.damage * attacker.stats.attackDamageMod));
+            playerActor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks);
+            playerActor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));
             Destroy(gameObject);
         }
         else if (col.TryGetComponent(out Actor actor))
         {
-            // todo apply debuff
-            actor.health.TakeDamage((int)(projectileStats.damage * attacker.stats.attackDamageMod));
+            actor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks);
+            actor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));
             Destroy(gameObject);
         }
     }

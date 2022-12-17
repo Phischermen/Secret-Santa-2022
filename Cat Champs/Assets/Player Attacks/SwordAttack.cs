@@ -75,6 +75,20 @@ public class SwordAttack : ActorAttack, IUpgrades
                     //Debug.Log("Missed " + angle);
                 }
             }
+            else
+            {
+                // Check if the hit object is a projectile
+                var projectile = hit.GetComponent<Projectile>();
+                if (projectile != null)
+                {
+                    // Check if the projectile is within the arc
+                    var angle = Vector2.Angle(direction, hit.transform.position - transform.position);
+                    if (angle < arc && projectile.projectileStats.canBeClearedBySword)
+                    {
+                        Destroy(projectile.gameObject);
+                    }
+                }
+            }
         }
     }
 

@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Actor : MonoBehaviour
 {
     // Provides stats for the actor.
-    public ActorStats stats;
-    
+    [FormerlySerializedAs("stats")] public ActorStats baseStats;
+    [HideInInspector] public List<(ActorStats stats, float expire)> debuffs = new();
+
     // Provides the actor's current health, and signals death.
     public HealthManager health;
 
@@ -24,8 +27,8 @@ public abstract class Actor : MonoBehaviour
     {
         health.Initialize(this);
         motionController.Initialize(transform);
-        motionController.GetSpeed = () => stats.speed;
-        motionController.GetAcceleration = () => stats.acceleration;
+        motionController.GetSpeed = GetSpeed;
+        motionController.GetAcceleration = GetAcceleration;
         attackController.Initialize(this);
     }
     
@@ -40,5 +43,44 @@ public abstract class Actor : MonoBehaviour
         
         // Invoke the attack controller.
         attackController.DoAttack();
+        
+        // Check if any debuffs have expired.
+        debuffs.RemoveAll(debuff => debuff.expire < Time.time);
+    }
+    
+    public void AddDebuff(ActorStats debuff, float expire, int max)
+    {
+        // Check if the debuff is already applied by counting.
+        int count = debuffs.Count(tuple => tuple.stats == debuff);
+        if (count < max)
+        {
+            debuffs.Add((debuff, Time.time + expire));
+        }
+    }
+    
+    public float GetSpeed()
+    {
+        return baseStats.speed + debuffs.Sum(debuff => debuff.stats.speed);
+    }
+    
+    public float GetAcceleration()
+    {
+        return baseStats.acceleration + debuffs.Sum(debuff => debuff.stats.acceleration);
+    }
+
+    public float GetAttackRangeMod()
+    {
+        return baseStats.attackRangeMod + debuffs.Sum(debuff => debuff.stats.attackRangeMod);
+    }
+    
+    public float GetAttackFrequencyMod()
+    {
+        var sum = baseStats.attackCooldownMod + debuffs.Sum(debuff => debuff.stats.attackCooldownMod);
+        return sum < 0 ? 0.01f : sum;
+    }
+    
+    public float GetAttackDamageMod()
+    {
+        return baseStats.attackDamageMod + debuffs.Sum(debuff => debuff.stats.attackDamageMod);
     }
 }

@@ -16,3 +16,7 @@ MonoBehaviour:
   acceleration: 0
   damage: 1
   debuff: {fileID: 11400000, guid: e5f5ce294b9aea14c8ee4f12fdd5bc7f, type: 2}
+  maxDebuffStacks: 10
+  debuffDuration: 5
+  lifespan: 10
+  canBeClearedBySword: 1

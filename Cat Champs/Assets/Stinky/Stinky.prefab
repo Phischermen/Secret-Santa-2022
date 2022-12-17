@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 709343333100067827}
   m_Layer: 6
   m_Name: Stinky
-  m_TagString: Untagged
+  m_TagString: DestroyOnReplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301b9e3777d81542aa62def638b14c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 4883e8bbea1b580409bb2bc53e4313d9, type: 2}
+  baseStats: {fileID: 11400000, guid: 4883e8bbea1b580409bb2bc53e4313d9, type: 2}
   health: {fileID: 337838164612006684}
   motionProvider: {fileID: 337838164612006685}
   motionController: {fileID: 337838164612006686}
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337838165059131197}
   - component: {fileID: 337838165059131198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stink Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

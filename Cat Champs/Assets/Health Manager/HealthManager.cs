@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour
 {
     [HideInInspector] public Actor owner;
 
-    public int MaxHealth => owner.stats.health;
+    public int MaxHealth => owner.baseStats.health;
     
     protected int _iframes = 0;
     public bool iFrameIsEven => _iframes % 2 == 0; // Used to flash the sprite when invulnerable.
@@ -22,7 +22,7 @@ public class HealthManager : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
     
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, ActorStats debuff = null)
     {
         if (_iframes > 0)
             return;

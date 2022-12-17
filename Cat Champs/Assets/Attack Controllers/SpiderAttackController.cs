@@ -10,7 +10,7 @@ public class SpiderAttackController : AttackController
     private static Dictionary<string, SpiderAttackController> attackingSpiderOfGroup = new Dictionary<string, SpiderAttackController>();
 
     
-    private float attackRange => owner.stats.attackRangeMod;
+    private float attackRange => owner.GetAttackRangeMod();
 
     protected override void InitializeInternal()
     {

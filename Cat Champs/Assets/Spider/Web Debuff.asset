@@ -16,5 +16,5 @@ MonoBehaviour:
   speed: -1
   acceleration: 0
   attackFrequencyMod: -1
-  attackDamageMod: 1
-  attackRangeMod: 1
+  attackDamageMod: 0
+  attackRangeMod: 0
