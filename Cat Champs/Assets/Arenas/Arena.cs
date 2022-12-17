@@ -137,5 +137,5 @@ public class Arena : MonoBehaviour
     }
 
     private List<SpawnStrategy> GetLeastPoliteStrategies(ICollection<SpawnStrategy> strategies) =>
-        strategies.OrderByDescending(strategy => strategy.GetPoliteness()).ToList();
+        strategies.OrderBy(strategy => strategy.GetPoliteness()).ToList();
 }
