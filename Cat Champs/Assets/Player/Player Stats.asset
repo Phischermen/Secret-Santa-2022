@@ -15,6 +15,6 @@ MonoBehaviour:
   health: 100
   speed: 10
   acceleration: 10
-  attackFrequencyMod: 1
+  attackCooldownMod: 1
   attackDamageMod: 1
   attackRangeMod: 1

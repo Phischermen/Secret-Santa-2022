@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: projectileStats
       value: 
       objectReference: {fileID: 11400000, guid: a0674da5e1144bd4e9b6d80de55264e1, type: 2}
+    - target: {fileID: 4330482380516854335, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
+      propertyPath: m_Radius
+      value: 0.84624314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330482380516854335, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.015370607
+      objectReference: {fileID: 0}
     - target: {fileID: 6085188805004290339, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
       propertyPath: m_Name
       value: Stink
