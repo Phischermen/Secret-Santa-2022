@@ -61,7 +61,9 @@ GameObject:
   - component: {fileID: 4101600588904948423}
   - component: {fileID: 1947676149659680851}
   - component: {fileID: 8640452139612297426}
+  - component: {fileID: 8257501389147077322}
   - component: {fileID: 554790940153298454}
+  - component: {fileID: 7400946093624573130}
   - component: {fileID: 2406747361169102279}
   - component: {fileID: 350925387110414472}
   m_Layer: 6
@@ -202,6 +204,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   velocity: {x: 0, y: 0}
+--- !u!114 &8257501389147077322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395773987349765162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb31a96b51c64bf4591c804c7836332a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  attacks:
+  - {fileID: 554790940153298454}
+  - {fileID: 7400946093624573130}
 --- !u!114 &554790940153298454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +237,21 @@ MonoBehaviour:
   target: {fileID: 0}
   webAttack: {fileID: 1186447233178020285}
   attackGroup: Spider
+--- !u!114 &7400946093624573130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395773987349765162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a0635bf506d8f342986763a35372fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  target: {fileID: 0}
+  explosionAttack: {fileID: 0}
 --- !u!50 &2406747361169102279
 Rigidbody2D:
   serializedVersion: 4
