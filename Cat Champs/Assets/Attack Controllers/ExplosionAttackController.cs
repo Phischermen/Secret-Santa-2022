@@ -16,7 +16,7 @@ public class ExplosionAttackController : AttackController
 
     public override void DoAttack()
     {
-        if (_internalCountdown <= 0f)
+        if (_internalCountdown <= 0f || InRange(explosionAttack.range))
         {
             explosionAttack.PerformAttack(Vector2.zero);
             _internalCountdown = countdown;

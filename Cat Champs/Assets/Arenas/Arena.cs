@@ -188,6 +188,8 @@ public class Arena : MonoBehaviour
     [HideInInspector] public float committedTime; // Amount of time committed to current set of strategies.
     [HideInInspector] public float timeToCommit;
     public float reevaluationFrequency = 1f;
+    
+    public AnimationCurve politenessWeightCurve;
 
     public void ControlSpawning()
     {
@@ -253,7 +255,8 @@ public class Arena : MonoBehaviour
     private void PickEarlyGameStrategy()
     {
         var candidates = GetLeastPoliteStrategies(earlyGameStrategies);
-        var strategy = candidates[0];
+        var idx = (int)(candidates.Count * politenessWeightCurve.Evaluate(Random.value));
+        var strategy = candidates[idx];
         CommitToStrategy(strategy);
     }
 
