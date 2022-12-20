@@ -63,7 +63,12 @@ public class GameplayState : State
         {
             return new MenuState();
         }
-        if (!_paused && !_gameOver && _arena) _arena.ControlSpawning();
+
+        if (!_paused && !_gameOver && _arena)
+        {
+            _arena.ControlSpawning();
+            _arena.UpdatePathGrid();
+        }
         return nextState;
     }
 
@@ -72,6 +77,9 @@ public class GameplayState : State
         _playerActor = GameObject.FindWithTag("Player").GetComponent<PlayerActor>();
         _playerActor.health.HealthDepleted += PlayerActorOnDeath;
         _playerActor.LevelUp += PlayerActorOnLevelUp;
+        
+        _arena.pathfindingTarget = _playerActor.transform;
+        _arena.UpdatePathGrid();
 
         Object.FindObjectOfType<PlayerUI>().Initialize(_playerActor);
     }

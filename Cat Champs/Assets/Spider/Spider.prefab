@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  attackFrequency: 1
+  attackCooldown: 1
   projectile: {fileID: 6085188805004290339, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
 --- !u!1 &3395773987349765162
 GameObject:
@@ -62,8 +62,8 @@ GameObject:
   - component: {fileID: 1947676149659680851}
   - component: {fileID: 8640452139612297426}
   - component: {fileID: 554790940153298454}
-  - component: {fileID: 6555893140098901937}
   - component: {fileID: 2406747361169102279}
+  - component: {fileID: 350925387110414472}
   m_Layer: 6
   m_Name: Spider
   m_TagString: DestroyOnReplay
@@ -125,8 +125,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1096753639
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0927528c6af3b724e907ad106a090560, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57077ac2b30c18a44a781f5aa1768576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 0e79ae5e348e1754ebabfebc9fab7f3e, type: 2}
+  baseStats: {fileID: 11400000, guid: 0e79ae5e348e1754ebabfebc9fab7f3e, type: 2}
   health: {fileID: 4101600588904948423}
   motionProvider: {fileID: 1947676149659680851}
   motionController: {fileID: 8640452139612297426}
@@ -218,22 +218,6 @@ MonoBehaviour:
   target: {fileID: 0}
   webAttack: {fileID: 1186447233178020285}
   attackGroup: Spider
---- !u!58 &6555893140098901937
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3395773987349765162}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.59
 --- !u!50 &2406747361169102279
 Rigidbody2D:
   serializedVersion: 4
@@ -255,3 +239,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!70 &350925387110414472
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395773987349765162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.0166667, y: 1.15}
+  m_Direction: 1

@@ -71,8 +71,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -3937737
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Time: 5
   m_Parameters:
@@ -219,8 +219,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -368450313
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b4131cd4e06c03d44bbb533b962b0369, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93193f85e075424ca37ad712d5b916c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 728b08619cbffae42975954b3f709bc0, type: 2}
+  baseStats: {fileID: 11400000, guid: 728b08619cbffae42975954b3f709bc0, type: 2}
   health: {fileID: 702239027103613049}
   motionProvider: {fileID: 702239027103613028}
   motionController: {fileID: 702239027103613029}
@@ -362,8 +362,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.92, y: 1.53}
+  m_Offset: {x: -0.04942304, y: -0.38851336}
+  m_Size: {x: 0.6974338, y: 0.697434}
   m_Direction: 0
 --- !u!50 &6836486943203639986
 Rigidbody2D:
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  attackFrequency: 0.1
+  attackCooldown: 0.1
   range: 2
   arc: 45
   damage: 10
@@ -515,8 +515,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -3937737
+  m_SortingLayer: -2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 88002aa2c5afd584e8f653f91c51e7b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

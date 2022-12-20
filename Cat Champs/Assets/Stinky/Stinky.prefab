@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 337838164612006680}
   - component: {fileID: 337838164612006687}
   - component: {fileID: 337838164612006686}
-  - component: {fileID: 337838164612006685}
+  - component: {fileID: 6802624797818321528}
   - component: {fileID: 337838164612006684}
   - component: {fileID: 337838164612006682}
   - component: {fileID: 7832824428301671487}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1096753639
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 31ba056cdf5abd143a1e2f44767d1a84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: 4883e8bbea1b580409bb2bc53e4313d9, type: 2}
   health: {fileID: 337838164612006684}
-  motionProvider: {fileID: 337838164612006685}
+  motionProvider: {fileID: 6802624797818321528}
   motionController: {fileID: 337838164612006686}
   attackController: {fileID: 337838164612006682}
 --- !u!114 &337838164612006686
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   velocity: {x: 0, y: 0}
---- !u!114 &337838164612006685
+--- !u!114 &6802624797818321528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,10 +132,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 337838164612006755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea3ad7183b7119d48a2ab248ff3c611f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e86729b366fad04591bcbbc27ccf58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &337838164612006684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,9 +182,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.034480214, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6333333
+  m_Radius: 0.73184836
 --- !u!50 &709343333100067827
 Rigidbody2D:
   serializedVersion: 4
@@ -252,5 +251,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
-  attackFrequency: 1
+  attackCooldown: 1
   projectile: {fileID: 7339585373482352571, guid: 058cbb21b1a850349919b0d3305853b0, type: 3}

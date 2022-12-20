@@ -7,9 +7,9 @@ public class StinkyActor : Actor
     protected new void Start()
     {
         base.Start();
-        ((BeelineMotionProvider)motionProvider).target = GameplayState.GetPlayer().transform;
         motionController.HitEdge += MotionControllerOnHitEdge;
         health.HealthDepleted += HealthOnHealthDepleted;
+        Destroy(gameObject, 20f);
     }
 
     private void HealthOnHealthDepleted(Actor obj)
