@@ -10,6 +10,7 @@ public class PlayerMotionProvider : MotionProvider
 
     protected override Vector2 GetMotionInternal()
     {
-        return movement.ReadValue<Vector2>();
+        var desiredMotion = movement.ReadValue<Vector2>();
+        return desiredMotion;
     }
 }

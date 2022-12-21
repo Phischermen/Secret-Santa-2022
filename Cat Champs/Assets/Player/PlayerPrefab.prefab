@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  slideAgainstWalls: 1
   velocity: {x: 0, y: 0}
 --- !u!114 &702239027103613027
 MonoBehaviour:
