@@ -25,15 +25,16 @@ public class LerpedMotionController : MotionController
             {
                 Translate(velocity * Time.deltaTime);
             }
+            // Clamp postition to arena bounds
+            var pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, GameplayState.GetArena().arenaBounds.min.x + 0.1f, GameplayState.GetArena().arenaBounds.max.x - 0.1f);
+            pos.y = Mathf.Clamp(pos.y, GameplayState.GetArena().arenaBounds.min.y + 0.1f, GameplayState.GetArena().arenaBounds.max.y - 0.1f);
+            transform.position = pos;
         }
         else
         {
             Translate(velocity * Time.deltaTime);
         }
-        // Clamp postition to arena bounds
-        var pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, GameplayState.GetArena().arenaBounds.min.x + 0.1f, GameplayState.GetArena().arenaBounds.max.x - 0.1f);
-        pos.y = Mathf.Clamp(pos.y, GameplayState.GetArena().arenaBounds.min.y + 0.1f, GameplayState.GetArena().arenaBounds.max.y - 0.1f);
-        transform.position = pos;
+        
     }
 }

@@ -64,6 +64,11 @@ public class GameplayState : State
             return new MenuState();
         }
 
+        if (Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            PlayerActorOnLevelUp(_playerActor);
+        }
+
         if (!_paused && !_gameOver && _arena)
         {
             _arena.ControlSpawning();

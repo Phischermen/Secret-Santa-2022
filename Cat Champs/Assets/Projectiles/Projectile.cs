@@ -11,8 +11,16 @@ public class Projectile : MonoBehaviour
     public MotionController motionController;
     public ProjectileStats projectileStats;
 
-    [HideInInspector] public bool targetingPlayer;
+    //[HideInInspector] public bool targetingPlayer;
+    public LayerMask targetLayer;
     
+    private Collider2D _myCollider;
+
+    private void Awake()
+    {
+        _myCollider = GetComponent<Collider2D>();
+    }
+
     private void Start()
     {
         motionController.Initialize(transform);
@@ -30,14 +38,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (targetingPlayer && col.CompareTag("Player"))
-        {
-            var playerActor = col.gameObject.GetComponent<PlayerActor>();
-            playerActor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks);
-            playerActor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));
-            Destroy(gameObject);
-        }
-        else if (col.TryGetComponent(out Actor actor))
+        if (!_myCollider.IsTouchingLayers(targetLayer)) return;
+        if (col.TryGetComponent(out Actor actor))
         {
             actor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks);
             actor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));

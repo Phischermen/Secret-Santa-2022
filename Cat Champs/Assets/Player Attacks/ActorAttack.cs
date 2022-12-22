@@ -6,6 +6,9 @@ using UnityEngine.Serialization;
 
 public abstract class ActorAttack : MonoBehaviour
 {
+    public bool usesMouseTargeting;
+    public bool usesMotionTargeting;
+    public bool isPassive;
     [HideInInspector] public Actor attacker;
     public float FrequencyMod => attacker.GetAttackFrequencyMod();
     [FormerlySerializedAs("attackFrequency")] public float attackCooldown;

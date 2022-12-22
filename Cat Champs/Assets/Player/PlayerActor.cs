@@ -25,6 +25,12 @@ public class PlayerActor : Actor
             direction => playerAnimator.FlipBasedOnDirection(direction);
     }
 
+    protected new void Update()
+    {
+        base.Update();
+        playerAnimator.spriteRenderer.enabled = health.iFrameIsEven;
+    }
+
     public event Action<int> XpChanged;
     public event Action<PlayerActor> LevelUp;
     public int level = 1;

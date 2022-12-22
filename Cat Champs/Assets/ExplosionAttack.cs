@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionAttack : ActorAttack
+public class ExplosionAttack : ActorAttack, IUpgrades
 {
     public float range = 1f;
     public float damage = 1f;
@@ -10,6 +11,12 @@ public class ExplosionAttack : ActorAttack
     public LayerMask layerMask;
 
     public GameObject explosionParticles;
+
+    private void Start()
+    {
+        InitializeUpgrades();
+    }
+
     protected override void PerformAttackInternal(Vector2 direction)
     {
         // Animate the explosion with a particle system
@@ -25,4 +32,45 @@ public class ExplosionAttack : ActorAttack
             }
         }
     }
+
+    private List<Upgrade> _upgrades = new();
+    public void InitializeUpgrades()
+    {
+        _upgrades.Add(new DamageUpgrade()
+        {
+            name = "Increase Explosion Damage",
+            description = "Increase the base damage of the explosion by 1",
+            explosionAttack = this
+        });
+        _upgrades.Add(new RangeUpgrade()
+        {
+            name = "Increase Explosion Range",
+            description = "Increase the base range of the explosion by half a meter",
+            explosionAttack = this
+        });
+    }
+
+    public List<Upgrade> GetUpgrades()
+    {
+        return _upgrades;
+    }
+    
+    protected class RangeUpgrade : Upgrade
+    {
+        public ExplosionAttack explosionAttack;
+        public override void UpgradeChosen()
+        {
+            explosionAttack.range += 0.5f;
+        }
+    }
+    
+    protected class DamageUpgrade : Upgrade
+    {
+        public ExplosionAttack explosionAttack;
+        public override void UpgradeChosen()
+        {
+            explosionAttack.damage += 1f;
+        }
+    }
+
 }

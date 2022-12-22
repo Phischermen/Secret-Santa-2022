@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class HealthManager : MonoBehaviour
 {
     [HideInInspector] public Actor owner;
+    public bool useIframes = false;
 
     public int MaxHealth => owner.baseStats.health;
     
@@ -29,8 +31,8 @@ public class HealthManager : MonoBehaviour
         
         CurrentHealth -= damage;
         OnDamageTaken?.Invoke(this, damage);
-        TextPopup.CreateForDamage(damage, 100, owner.transform.position);
-        _iframes = 30;
+        TextPopup.CreateForDamage(damage, 100, (Vector2)owner.transform.position + Random.insideUnitCircle);
+        if (useIframes) _iframes = 30;
 
         if (CurrentHealth <= 0)
         {

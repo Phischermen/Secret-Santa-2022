@@ -6,6 +6,7 @@ public class ProjectileAttack : ActorAttack
 {
     // These stats are applied as temporary debuffs the the hit actor. 
     public GameObject projectile;
+    public LayerMask hitMask;
     protected override void PerformAttackInternal(Vector2 direction)
     {
         // Spawn the projectile. Make it face the direction of the attack.
@@ -13,7 +14,7 @@ public class ProjectileAttack : ActorAttack
         // Get the projectile component and set its owner.
         var proj = gobj.GetComponent<Projectile>();
         proj.attacker = attacker;
-        proj.targetingPlayer = attacker.attackController.target == GameplayState.GetPlayer();
+        proj.targetLayer = hitMask;
         if (proj.motionProvider is LinearMotionProvider linear)
         {
             linear.direction = direction;
