@@ -134,7 +134,6 @@ public class FiniteStateMachine : MonoBehaviour
             
             void SceneLoaded(Scene scene, LoadSceneMode _)
             {
-                Debug.Log($"Scene loaded: {scene.name}");
                 if (scene.buildIndex == _buildIdx)
                 {
                     _action.Invoke();

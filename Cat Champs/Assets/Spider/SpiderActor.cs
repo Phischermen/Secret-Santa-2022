@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SpiderActor : Actor
 {
+    public bool destroyWhenHealthDepleted = true;
     protected new void Start()
     {
         base.Start();
@@ -14,7 +15,10 @@ public class SpiderActor : Actor
 
     private void Health_HealthDepleted(Actor obj)
     {
-        Destroy(obj.gameObject);
+        if (destroyWhenHealthDepleted)
+        {
+            Destroy(obj.gameObject);
+        }
     }
 
     private void MotionController_HitEdge(Vector2 hitPosition)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ExplosionAttackController : AttackController
@@ -7,7 +8,7 @@ public class ExplosionAttackController : AttackController
     public float countdown = 10f;
     private float _internalCountdown;
     public ExplosionAttack explosionAttack;
-
+    
     protected override void InitializeInternal()
     {
         base.InitializeInternal();
@@ -16,6 +17,7 @@ public class ExplosionAttackController : AttackController
 
     public override void DoAttack()
     {
+        
         if (_internalCountdown <= 0f || InRange(explosionAttack.range))
         {
             explosionAttack.PerformAttack(Vector2.zero);

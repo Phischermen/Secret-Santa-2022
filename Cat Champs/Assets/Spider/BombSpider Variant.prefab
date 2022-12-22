@@ -4823,6 +4823,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KamikazeeAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 3307894995153721557, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
+      propertyPath: attackCooldown
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307894995153721557, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
+      propertyPath: destroyObjectWhenAnimationFinished
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8413559212795884555, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4996,6 +5004,7 @@ MonoBehaviour:
   motionController: {fileID: 1981789468937465059}
   attackController: {fileID: 2229633349689642747}
   kamikazeeAttack: {fileID: 2870528515922716874}
+  spriteRenderer: {fileID: 6580287815144470435}
 --- !u!114 &6089542301603600118 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
@@ -5007,6 +5016,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392ec93491594414682e4df234df2333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &6580287815144470435 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3979025464143250322, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+  m_PrefabInstance: {fileID: 7811975640197526577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8605885581082047586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1947676149659680851, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}

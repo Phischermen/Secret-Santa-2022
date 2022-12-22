@@ -5,7 +5,7 @@ using UnityEngine;
 public class BombSpiderActor : SpiderActor
 {
     public ActorAttack kamikazeeAttack;
-    
+    public SpriteRenderer spriteRenderer;
     protected new void Start()
     {
         base.Start();
@@ -16,7 +16,8 @@ public class BombSpiderActor : SpiderActor
 
     private void KamikazeeAttackOnAttackPerformed()
     {
-        Destroy(gameObject);
+        Destroy(this); // This should make the spider stop moving/ attacking.
+        spriteRenderer.enabled = false;
     }
 
     private void HealthOnHealthDepleted(Actor obj)

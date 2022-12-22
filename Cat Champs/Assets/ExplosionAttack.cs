@@ -1,16 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class ExplosionAttack : ActorAttack, IUpgrades
 {
+    public bool destroyObjectWhenAnimationFinished;
     public float range = 1f;
     public float damage = 1f;
     protected Collider2D[] _results = new Collider2D[10];
     public LayerMask layerMask;
 
     public GameObject explosionParticles;
+    public Transform shockwaveContainer;
+    public SpriteRenderer shockwave;
+
+    public float growDuration;
+    public float fadeOutTime;
 
     private void Start()
     {
@@ -19,7 +26,24 @@ public class ExplosionAttack : ActorAttack, IUpgrades
 
     protected override void PerformAttackInternal(Vector2 direction)
     {
-        // Animate the explosion with a particle system
+        Debug.Log("Performing attack");
+        // Animate the explosion with a particle system and a sprite.
+        // Make sprite grow fast to the explosion attack's radius then fade slowly.
+        shockwave.color = Color.white;
+        DOTween.Kill(this);
+        var sequence = DOTween.Sequence(this)
+            .Append(
+                shockwaveContainer.DOScale(range, growDuration)
+                    .From(0f))
+            .Append(
+                shockwave.DOFade(0f, fadeOutTime)
+                    .SetEase(Ease.OutQuad));
+        if (destroyObjectWhenAnimationFinished)
+        {
+            sequence.OnComplete(() => Destroy(gameObject));
+        }
+
+        sequence.Play();
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
         // Perform a circle cast to find all actors in range.
         var size = Physics2D.OverlapCircleNonAlloc(transform.position, range, _results, layerMask);
