@@ -9,7 +9,7 @@ public class StinkyActor : Actor
         base.Start();
         motionController.HitEdge += MotionControllerOnHitEdge;
         health.HealthDepleted += HealthOnHealthDepleted;
-        Destroy(gameObject, 20f);
+        //Destroy(gameObject, 20f);
     }
 
     private void HealthOnHealthDepleted(Actor obj)

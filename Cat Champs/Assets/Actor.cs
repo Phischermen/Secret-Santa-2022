@@ -9,7 +9,7 @@ public abstract class Actor : MonoBehaviour
 {
     // Provides stats for the actor.
     [FormerlySerializedAs("stats")] public ActorStats baseStats;
-    [HideInInspector] public List<(ActorStats stats, float expire)> debuffs = new();
+    [HideInInspector] public List<(ActorStats stats, float expire, GameObject particles)> debuffs = new();
 
     // Provides the actor's current health, and signals death.
     public HealthManager health;
@@ -45,16 +45,28 @@ public abstract class Actor : MonoBehaviour
         attackController.DoAttack();
         
         // Check if any debuffs have expired.
-        debuffs.RemoveAll(debuff => debuff.expire < Time.time);
+        for (var i = 0; i < debuffs.Count; i++)
+        {
+            var valueTuple = debuffs[i];
+            if (valueTuple.expire < Time.time)
+            {
+                Destroy(valueTuple.particles);
+                debuffs.RemoveAt(i);
+                i--;
+            }
+        }
     }
     
-    public void AddDebuff(ActorStats debuff, float expire, int max)
+    public void AddDebuff(ActorStats debuff, float expire, int max, GameObject particles)
     {
+        // Instantiate the particles.
+        var transform1 = transform;
+        GameObject particlesInstance = Instantiate(particles, transform1.position, Quaternion.identity, transform1);
         // Check if the debuff is already applied by counting.
         int count = debuffs.Count(tuple => tuple.stats == debuff);
         if (count < max)
         {
-            debuffs.Add((debuff, Time.time + expire));
+            debuffs.Add((debuff, Time.time + expire, particlesInstance));
         }
     }
     

@@ -12,6 +12,7 @@ public class ExplosionAttack : ActorAttack, IUpgrades
     protected Collider2D[] _results = new Collider2D[10];
     public LayerMask layerMask;
 
+    public GameObject objectToDestroy;
     public GameObject explosionParticles;
     public Transform shockwaveContainer;
     public SpriteRenderer shockwave;
@@ -40,7 +41,7 @@ public class ExplosionAttack : ActorAttack, IUpgrades
                     .SetEase(Ease.OutQuad));
         if (destroyObjectWhenAnimationFinished)
         {
-            sequence.OnComplete(() => Destroy(gameObject));
+            sequence.OnComplete(() => Destroy(objectToDestroy));
         }
 
         sequence.Play();

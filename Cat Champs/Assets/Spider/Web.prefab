@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2039810535
-  m_SortingLayer: 3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e7ce74408d13216419ef77e20ae1f851, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +105,10 @@ MonoBehaviour:
   motionProvider: {fileID: 3513882274514422441}
   motionController: {fileID: 6947425677269704725}
   projectileStats: {fileID: 11400000, guid: 4c60124f0c818594eb27e9ea32c7c68f, type: 2}
-  targetingPlayer: 0
+  debuffParticles: {fileID: 1200704096165406984, guid: 21ff0f79e98449a4c843df32f82d74ab, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &3513882274514422441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  slideAgainstWalls: 0
   velocity: {x: 0, y: 0}
 --- !u!58 &4330482380516854335
 CircleCollider2D:

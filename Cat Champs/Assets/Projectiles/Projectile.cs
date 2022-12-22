@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public MotionProvider motionProvider;
     public MotionController motionController;
     public ProjectileStats projectileStats;
+    public GameObject debuffParticles;
 
     //[HideInInspector] public bool targetingPlayer;
     public LayerMask targetLayer;
@@ -41,7 +42,7 @@ public class Projectile : MonoBehaviour
         if (!_myCollider.IsTouchingLayers(targetLayer)) return;
         if (col.TryGetComponent(out Actor actor))
         {
-            actor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks);
+            actor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks, debuffParticles);
             actor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));
             Destroy(gameObject);
         }
