@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
       propertyPath: attackCooldown
-      value: 0.2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
       propertyPath: layerMask.m_Bits
@@ -91,6 +91,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 772390b6cd81bfb46ad7c8cc380a5ec5, type: 3}
+    - target: {fileID: 337838164612006680, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: m_Color.g
+      value: 0.675282
+      objectReference: {fileID: 0}
+    - target: {fileID: 337838164612006680, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: m_Color.r
+      value: 0.47798735
+      objectReference: {fileID: 0}
     - target: {fileID: 337838164612006681, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -139,9 +147,37 @@ PrefabInstance:
       propertyPath: attack
       value: 
       objectReference: {fileID: 8872141199227801149}
+    - target: {fileID: 337838164612006682, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: spaceBetweenAttacks
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337838164612006684, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: xpDrops.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 337838164612006684, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: xpDrops.Array.data[4]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 337838164612006684, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: xpDrops.Array.data[5]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 337838164612006684, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: xpDrops.Array.data[6]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 337838164612006684, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: xpDrops.Array.data[7]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 337838164612006687, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+      propertyPath: baseStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 86bf9a1c6a9a51845abe36c312d5a1ac, type: 2}
     - target: {fileID: 337838164612006755, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
       propertyPath: m_Name
-      value: Knight
+      value: Fast Knight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}

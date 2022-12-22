@@ -18,6 +18,7 @@ public class CropDuster : AttackController
     {
         if (Vector2.Distance(transform.position, _positionOfLastAttack) > spaceBetweenAttacks)
         {
+            _positionOfLastAttack = transform.position;
             attack.PerformAttack(GetDirectionToTarget());
         }
     }

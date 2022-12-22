@@ -9,16 +9,20 @@ public class Arena : MonoBehaviour
     public List<Bounds> arenaObstacles;
 
     // A collision occurs when a point is inside the bounds of an obstacle, or outside the bounds of the arena.
-    public bool IsCollision(Vector2 point)
+    public bool IsCollision(Vector2 point, float padding = 0f)
     {
-        if (!arenaBounds.Contains(point))
+        var padArenaBounds = arenaBounds;
+        padArenaBounds.Expand(-padding);
+        if (!padArenaBounds.Contains(point))
         {
             return true;
         }
 
         foreach (Bounds obstacle in arenaObstacles)
         {
-            if (obstacle.Contains(point))
+            var padObstacle = obstacle;
+            padObstacle.Expand(padding);
+            if (padObstacle.Contains(point))
             {
                 return true;
             }
@@ -211,7 +215,7 @@ public class Arena : MonoBehaviour
             for (int y = 0; y < _pathfindingGrid.GetLength(1); y++)
             {
                 Vector2 cellPosition = new Vector2(x / cellsPerUnit, y / cellsPerUnit) + (Vector2)arenaBounds.min;
-                _pathfindingGrid[x, y] = (float.MaxValue, IsCollision(cellPosition));
+                _pathfindingGrid[x, y] = (float.MaxValue, IsCollision(cellPosition, 2.5f));
             }
         }
     }
@@ -284,7 +288,11 @@ public class Arena : MonoBehaviour
                     // Update the distance to the target.
                     _pathfindingGrid[x + i, y + j] = (distance + 1f, false);
                     // Add the cell to the open list.
-                    _openList.Enqueue((x + i, y + j));
+                    var valueTuple = (x + i, y + j);
+                    if (!_openList.Contains(valueTuple))
+                    {
+                        _openList.Enqueue(valueTuple);
+                    }
                 }
             }
         }
