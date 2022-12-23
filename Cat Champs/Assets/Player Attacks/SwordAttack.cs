@@ -67,7 +67,7 @@ public class SwordAttack : ActorAttack, IUpgrades
                     Debug.DrawLine(transform.position, hit.transform.position, Color.green, 1f);
                     // Hit the enemy
                     //Debug.Log("Hit " + enemy.name);
-                    enemy.health.TakeDamage(damage);
+                    enemy.health.TakeDamage((int)(attacker.GetAttackDamageMod() * damage));
                 }
                 else
                 {
@@ -83,7 +83,7 @@ public class SwordAttack : ActorAttack, IUpgrades
                 {
                     // Check if the projectile is within the arc
                     var angle = Vector2.Angle(direction, hit.transform.position - transform.position);
-                    if (angle < arc && projectile.projectileStats.canBeClearedBySword)
+                    if (angle < arc && projectile.projectileStats.canBeClearedBySword && projectile.attacker != attacker)
                     {
                         Destroy(projectile.gameObject);
                     }

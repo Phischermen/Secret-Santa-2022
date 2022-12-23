@@ -24,14 +24,41 @@ public class MenuState : FiniteStateMachine.State
 
     private void SetupMainMenuScene()
     {
+        var playerSelection = GameObject.Find("PlayerSelection");
         foreach (var button in Object.FindObjectsOfType<Button>())
         {
             switch (button.name)
             {
                 case "PlayButton":
-                    button.onClick.AddListener(() => nextState = new GameplayState(Scenum.Arena, 0));
+                    button.onClick.AddListener(() =>
+                    {
+                        playerSelection.SetActive(true);
+                        button.gameObject.SetActive(false);
+                    });
+                    break;
+                case "Character1":
+                    button.onClick.AddListener(() =>
+                    {
+                        playerSelection.SetActive(false);
+                        nextState = new GameplayState(Scenum.Arena, 0);
+                    });
+                    break;
+                case "Character2":
+                    button.onClick.AddListener(() =>
+                    {
+                        playerSelection.SetActive(false);
+                        nextState = new GameplayState(Scenum.Arena, 1);
+                    });
+                    break;
+                case "Character3":
+                    button.onClick.AddListener(() =>
+                    {
+                        playerSelection.SetActive(false);
+                        nextState = new GameplayState(Scenum.Arena, 2);
+                    });
                     break;
             }
         }
+        playerSelection.gameObject.SetActive(false);
     }
 }

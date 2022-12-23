@@ -47,7 +47,7 @@ public class FiniteStateMachine : MonoBehaviour
             {
                 if (arg0.name != "EmptyScene") return;
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("EmptyScene"));
-                CurrentState = new GameplayState(Scenum.Arena, 0);
+                CurrentState = new MenuState();
             };
         }
     }

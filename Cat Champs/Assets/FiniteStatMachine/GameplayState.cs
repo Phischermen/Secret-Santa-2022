@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using static FiniteStateMachine;
+using Random = UnityEngine.Random;
 
 public class GameplayState : State
 {
@@ -44,11 +46,13 @@ public class GameplayState : State
     protected override void EndState()
     {
         UnloadSceneIfLoaded(Scenum.GameScene);
+        UnloadSceneIfLoaded(_arenaSceneIdx);
         UnloadSceneIfLoaded(Scenum.PlayerUI);
         UnloadSceneIfLoaded(Scenum.GameoverScene);
         UnloadSceneIfLoaded(Scenum.UpgradeScene);
         _playerActor = null;
         _arena = null;
+        Object.Destroy(_playerGameObject);
         foreach (var gameObject in GameObject.FindGameObjectsWithTag("DestroyOnReplay"))
         {
             Object.Destroy(gameObject);
@@ -79,7 +83,8 @@ public class GameplayState : State
 
     private void SetupGameScene()
     {
-        _playerActor = GameObject.FindWithTag("Player").GetComponent<PlayerActor>();
+        _playerGameObject = Object.Instantiate(Object.FindObjectOfType<PlayerResourceProvider>().characters[_character], Vector3.zero, quaternion.identity);
+        _playerActor = _playerGameObject.GetComponent<PlayerActor>();
         _playerActor.health.HealthDepleted += PlayerActorOnDeath;
         _playerActor.LevelUp += PlayerActorOnLevelUp;
         
@@ -96,6 +101,7 @@ public class GameplayState : State
     }
 
     private static PlayerActor _playerActor;
+    private static GameObject _playerGameObject;
 
     public static PlayerActor GetPlayer()
     {

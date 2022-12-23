@@ -20,6 +20,7 @@ public class ExplosionAttackController : AttackController
         
         if (_internalCountdown <= 0f || InRange(explosionAttack.range))
         {
+            if (countdown - _internalCountdown < 1f) return; // Bugfix: Prevents the explosion from being triggered immediately after spawning.
             explosionAttack.PerformAttack(Vector2.zero);
             _internalCountdown = countdown;
         }

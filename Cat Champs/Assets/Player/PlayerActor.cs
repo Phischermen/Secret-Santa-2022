@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerActor : Actor
@@ -20,9 +21,19 @@ public class PlayerActor : Actor
         ((PlayerAttackController)attackController).attack = _controls.Gameplay.Attack;
         ((PlayerAttackController)attackController).mouseAim = _controls.Gameplay.MouseAim;
 
-        _controls.Gameplay.Movement.performed += ctx => playerAnimator.FlipBasedOnDirection(ctx.ReadValue<Vector2>());
+        _controls.Gameplay.Movement.performed += OnMovementOnperformed;
         ((PlayerAttackController)attackController).PerformedActiveAttack +=
             direction => playerAnimator.FlipBasedOnDirection(direction);
+    }
+
+    private void OnMovementOnperformed(InputAction.CallbackContext ctx)
+    {
+        playerAnimator.FlipBasedOnDirection(ctx.ReadValue<Vector2>());
+    }
+
+    private void OnDestroy()
+    {
+        _controls.Gameplay.Movement.performed -= OnMovementOnperformed;
     }
 
     protected new void Update()
