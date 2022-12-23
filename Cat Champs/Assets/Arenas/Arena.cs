@@ -392,8 +392,13 @@ public class Arena : MonoBehaviour
         }
     }
 
+    private List<(float time, int damage)> _damageHistory = new();
     private void StartArena()
     {
+        GameplayState.GetPlayer().health.OnDamageTaken += (_, damage) =>
+        {
+            _damageHistory.Add((timeSinceArenaStart, damage));
+        };
         if (firstTimeMode)
         {
             // Do not spawn anything for a little while.
@@ -408,17 +413,31 @@ public class Arena : MonoBehaviour
 
     private void ReevaluateStrategy()
     {
+        var recentTotalDamage = 0;
+        for (int i = 0; i < _damageHistory.Count; i++)
+        {
+            // If damage was taken more than 10 seconds ago, stop counting it.
+            var valueTuple = _damageHistory[i];
+            if (timeSinceArenaStart - valueTuple.time > 10f)
+            {
+                _damageHistory.RemoveRange(i, _damageHistory.Count - i);
+                break;
+            }
+            recentTotalDamage += valueTuple.damage;
+        }
         if (committedTime > timeToCommit)
         {
             // We have exceeded the recommended amount of commitment time for the chosen strategies.
             // Raise intensity of active strategies.
             foreach (var activeStrategy in activeStrategies)
             {
-                activeStrategy.intensity += 0.1f;
+                if (recentTotalDamage < 10f)
+                {
+                    activeStrategy.intensity += 0.1f;
+                }
             }
             PickNewStrategy();
         }
-        // todo Evaluate player's performance and possibly change strategy
     }
 
     private void PickNewStrategy()

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [HideInInspector] public Actor attacker;
+    [HideInInspector] public ProjectileAttack attack;
     public MotionProvider motionProvider;
     public MotionController motionController;
     public ProjectileStats projectileStats;
@@ -43,7 +44,7 @@ public class Projectile : MonoBehaviour
         if (col.TryGetComponent(out Actor actor))
         {
             actor.AddDebuff(projectileStats.debuff, projectileStats.debuffDuration, projectileStats.maxDebuffStacks, debuffParticles);
-            actor.health.TakeDamage((int)(projectileStats.damage * attacker.GetAttackDamageMod()));
+            actor.health.TakeDamage((int)(projectileStats.damage + attack.bonusDamage * attacker.GetAttackDamageMod()));
             Destroy(gameObject);
         }
     }

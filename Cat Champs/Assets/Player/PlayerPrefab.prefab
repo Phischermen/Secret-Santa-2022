@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3395594189918900529, guid: e406f9d6581cd4249bbe2a4869159be8, type: 3}
       propertyPath: m_Name
-      value: WebAttack
+      value: Web Attack
       objectReference: {fileID: 0}
     - target: {fileID: 6789749037670785969, guid: e406f9d6581cd4249bbe2a4869159be8, type: 3}
       propertyPath: m_RootOrder
