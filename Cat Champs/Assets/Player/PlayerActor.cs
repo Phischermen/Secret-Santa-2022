@@ -36,12 +36,17 @@ public class PlayerActor : Actor
     public int level = 1;
     public int experience = 0;
     private int _experienceToNextLevel = 100;
+
+    public int GetExperienceToNextLevel()
+    {
+        return 100 + level * 10;
+    }
     public void CollectExperience(int points)
     {
         experience += points;
-        if (experience >= _experienceToNextLevel)
+        if (experience >= GetExperienceToNextLevel())
         {
-            experience -= _experienceToNextLevel;
+            experience -= GetExperienceToNextLevel();
             level++;
             LevelUp?.Invoke(this);
         }

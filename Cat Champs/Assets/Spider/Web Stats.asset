@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   acceleration: 1
-  damage: 1
+  damage: 4
   debuff: {fileID: 11400000, guid: 09a18667e99d5dc4d9e281a0dbb99915, type: 2}
   maxDebuffStacks: 10
   debuffDuration: 5

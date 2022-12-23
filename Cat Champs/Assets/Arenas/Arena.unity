@@ -207,6 +207,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.9}
+--- !u!1 &99130792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99130794}
+  - component: {fileID: 99130793}
+  m_Layer: 0
+  m_Name: Big Bomb Spam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &99130793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99130792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e46ecc04d2ac43a3702561d7b0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  intensity: 0
+  spawnFrequency: 1
+  actorsToSpawn:
+  - {fileID: 3089999969668518833, guid: dbf95dd9cf2b5f7488b2e3de72f56c8f, type: 3}
+  lastTimeSpawned: 0
+  commitmentTime: 10
+--- !u!4 &99130794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99130792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 682716528}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &216491403
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +762,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &433531660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433531662}
+  - component: {fileID: 433531661}
+  m_Layer: 0
+  m_Name: Super Knight Spam Strategy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &433531661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433531660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e46ecc04d2ac43a3702561d7b0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  intensity: 0
+  spawnFrequency: 1
+  actorsToSpawn:
+  - {fileID: 7851279051686023064, guid: ccb2b98c6dbcefe43b064a2fadea0868, type: 3}
+  - {fileID: 3218458469120513843, guid: 093ac19b3b7e383468219f91df10df78, type: 3}
+  lastTimeSpawned: 0
+  commitmentTime: 10
+--- !u!4 &433531662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433531660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 682716528}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450737496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1150,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &596217567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 596217569}
+  - component: {fileID: 596217568}
+  m_Layer: 0
+  m_Name: SuperSpiderSpamStrategy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &596217568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596217567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e46ecc04d2ac43a3702561d7b0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  intensity: 0
+  spawnFrequency: 1
+  actorsToSpawn:
+  - {fileID: 6276348777593817078, guid: ffe23ac49134c8e4795a7f6316b6f2bc, type: 3}
+  - {fileID: 8008656093102231753, guid: f4c8c5393763167408e25bebe6f75fbd, type: 3}
+  - {fileID: 3395773987349765162, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+  - {fileID: 3395773987349765162, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+  - {fileID: 3395773987349765162, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+  lastTimeSpawned: 0
+  commitmentTime: 10
+--- !u!4 &596217569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596217567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 682716528}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606080839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1289,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &625432914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625432916}
+  - component: {fileID: 625432915}
+  m_Layer: 0
+  m_Name: Spawn Big Spiders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &625432915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625432914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e46ecc04d2ac43a3702561d7b0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  intensity: 0
+  spawnFrequency: 10
+  actorsToSpawn:
+  - {fileID: 6276348777593817078, guid: ffe23ac49134c8e4795a7f6316b6f2bc, type: 3}
+  lastTimeSpawned: 0
+  commitmentTime: 20
+--- !u!4 &625432916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625432914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 682716528}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &682716526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,16 +1378,23 @@ MonoBehaviour:
   - m_Center: {x: 16.363777, y: -4.506688, z: 0}
     m_Extent: {x: 1.1186953, y: 7.323722, z: 0}
   pathfindingTarget: {fileID: 0}
-  firstTimeMode: 0
+  firstTimeMode: 1
   restfulSpawnStrategies: []
   earlyGameStrategies:
   - {fileID: 1567071221}
   - {fileID: 1585811996}
+  lateGameStrategies:
   - {fileID: 1491693772}
   - {fileID: 1673596971}
+  - {fileID: 625432915}
+  - {fileID: 99130793}
+  - {fileID: 1407784169}
+  - {fileID: 596217568}
+  - {fileID: 433531661}
   activeStrategies: []
   timeSinceArenaStart: 0
   timeToReevaluateStrategy: 0
+  timeToDoASpecialEvent: 0
   committedTime: 0
   timeToCommit: 0
   reevaluationFrequency: 1
@@ -1231,6 +1447,11 @@ Transform:
   - {fileID: 1585811997}
   - {fileID: 1491693771}
   - {fileID: 1673596970}
+  - {fileID: 625432916}
+  - {fileID: 99130794}
+  - {fileID: 1407784170}
+  - {fileID: 596217569}
+  - {fileID: 433531662}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2410,6 +2631,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.9}
+--- !u!1 &1407784168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407784170}
+  - component: {fileID: 1407784169}
+  m_Layer: 0
+  m_Name: Super Stinky Spam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407784169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407784168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e46ecc04d2ac43a3702561d7b0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  intensity: 0
+  spawnFrequency: 0.5
+  actorsToSpawn:
+  - {fileID: 8320519068020949626, guid: 0ec6ea31208f8aa4397efc4bc8bb20cd, type: 3}
+  - {fileID: 337838164612006755, guid: 8a993adfa44f09c43aa8ea2b3448ced7, type: 3}
+  lastTimeSpawned: 0
+  commitmentTime: 10
+--- !u!4 &1407784170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407784168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 682716528}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1458549837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,11 +3050,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 0
   intensity: 0
-  spawnFrequency: 1
+  spawnFrequency: 2
   actorsToSpawn:
-  - {fileID: 7851279051686023064, guid: ccb2b98c6dbcefe43b064a2fadea0868, type: 3}
+  - {fileID: 3218458469120513843, guid: 093ac19b3b7e383468219f91df10df78, type: 3}
   lastTimeSpawned: 0
-  commitmentTime: 10
+  commitmentTime: 20
 --- !u!1 &1676602551
 GameObject:
   m_ObjectHideFlags: 0

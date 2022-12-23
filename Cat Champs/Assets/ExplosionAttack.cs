@@ -85,7 +85,7 @@ public class ExplosionAttack : ActorAttack, IUpgrades
         public ExplosionAttack explosionAttack;
         public override void UpgradeChosen()
         {
-            explosionAttack.range += 0.5f;
+            explosionAttack.range += 1f;
         }
     }
     
@@ -94,7 +94,7 @@ public class ExplosionAttack : ActorAttack, IUpgrades
         public ExplosionAttack explosionAttack;
         public override void UpgradeChosen()
         {
-            explosionAttack.damage += 1f;
+            explosionAttack.damage += 10f;
         }
     }
 

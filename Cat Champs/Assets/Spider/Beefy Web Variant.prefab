@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4126626931379208988, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
+      propertyPath: projectileStats
+      value: 
+      objectReference: {fileID: 11400000, guid: c3fbbcbad9a8f00419333d650aeb0e7c, type: 2}
     - target: {fileID: 6085188805004290339, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
       propertyPath: m_Name
-      value: Beefy Web
+      value: Beefy Web Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8997380299160686753, guid: cddc44a677304f947bd6a5da7771e544, type: 3}
       propertyPath: m_RootOrder

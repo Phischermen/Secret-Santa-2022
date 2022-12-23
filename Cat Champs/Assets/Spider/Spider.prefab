@@ -111,6 +111,7 @@ MonoBehaviour:
   motionProvider: {fileID: 1947676149659680851}
   motionController: {fileID: 8640452139612297426}
   attackController: {fileID: 554790940153298454}
+  destroyWhenHealthDepleted: 1
 --- !u!114 &4101600588904948423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  useIframes: 0
   xpDrops:
+  - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
   - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
   - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
   - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}

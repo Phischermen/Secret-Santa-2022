@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0523edcffd0e84f8243a66faff0d09, type: 3}
-  m_Name: Beefy Spider Stats
+  m_Script: {fileID: 11500000, guid: 91cb2ac3cc9b3e44196dea6bc31f3d62, type: 3}
+  m_Name: Big Web Stats
   m_EditorClassIdentifier: 
-  health: 40
-  speed: 5
+  speed: 6
   acceleration: 1
-  attackCooldownMod: 1
-  attackDamageMod: 1
-  attackRangeMod: 20
+  damage: 8
+  debuff: {fileID: 11400000, guid: 09a18667e99d5dc4d9e281a0dbb99915, type: 2}
+  maxDebuffStacks: 10
+  debuffDuration: 5
+  lifespan: 5
+  canBeClearedBySword: 0

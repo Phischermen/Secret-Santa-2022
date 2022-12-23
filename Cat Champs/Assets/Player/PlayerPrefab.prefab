@@ -356,6 +356,18 @@ PrefabInstance:
       value: SwordAttack
       objectReference: {fileID: 0}
     - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
+      propertyPath: range
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
+      propertyPath: damage
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
+      propertyPath: attackCooldown
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642750798136873751, guid: 72c9956bf8efb2447a053bba113ee22f, type: 3}
       propertyPath: usesMouseTargeting
       value: 1
       objectReference: {fileID: 0}
@@ -516,6 +528,14 @@ PrefabInstance:
     - target: {fileID: 2238761901048695215, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
       propertyPath: m_Name
       value: KamikazeeAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307894995153721557, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
+      propertyPath: range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307894995153721557, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
+      propertyPath: damage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3307894995153721557, guid: b63bd967483537048a44fe1ee8ebd434, type: 3}
       propertyPath: attackCooldown

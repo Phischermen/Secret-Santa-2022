@@ -105,6 +105,7 @@ public class GameplayState : State
     private void PlayerActorOnDeath(Actor obj)
     {
         _gameOverUI.Show();
+        Object.Destroy(_playerActor);
     }
     
     private void PlayerActorOnLevelUp(PlayerActor player)

@@ -31,6 +31,7 @@ public class SpamStrategy : SpawnStrategy
                     Random.Range(arenaBounds.min.y, arenaBounds.max.y));
             } while (GameplayState.GetArena().IsCollision(point));
             var actor = Spawn(gobj, point);
+            actor.health.Defense = 1f + intensity;
             spawnedActors++;
             actor.health.HealthDepleted += _ => killedActors++;
         }

@@ -6,6 +6,16 @@ using Random = UnityEngine.Random;
 
 public class HealthManager : MonoBehaviour
 {
+    private float _defense = 1f;
+    public float Defense {
+        get
+        {
+            return _defense;
+        }
+        set{
+            _defense = Mathf.Max(value, 1f);
+        }
+}
     [HideInInspector] public Actor owner;
     public bool useIframes = false;
 
@@ -28,10 +38,11 @@ public class HealthManager : MonoBehaviour
     {
         if (_iframes > 0)
             return;
-        
-        CurrentHealth -= damage;
-        OnDamageTaken?.Invoke(this, damage);
-        TextPopup.CreateForDamage(damage, 100, (Vector2)owner.transform.position + Random.insideUnitCircle);
+
+        var damageNotDefended = (int)(damage / Defense);
+        CurrentHealth -= damageNotDefended;
+        OnDamageTaken?.Invoke(this, damageNotDefended);
+        TextPopup.CreateForDamage(damageNotDefended, 100, (Vector2)owner.transform.position + Random.insideUnitCircle);
         if (useIframes) _iframes = 30;
 
         if (CurrentHealth <= 0)

@@ -353,12 +353,15 @@ public class Arena : MonoBehaviour
 
     // These strategies spawn basic enemies at the beginning of the game. 
     public List<SpawnStrategy> earlyGameStrategies;
+    
+    public List<SpawnStrategy> lateGameStrategies;
 
     // These are the strategies that are currently active.
     public List<SpawnStrategy> activeStrategies;
 
     [HideInInspector] public float timeSinceArenaStart = 0f;
     [HideInInspector] public float timeToReevaluateStrategy = 0f;
+    [HideInInspector] public float timeToDoASpecialEvent;
     [HideInInspector] public float committedTime; // Amount of time committed to current set of strategies.
     [HideInInspector] public float timeToCommit;
     public float reevaluationFrequency = 1f;
@@ -385,6 +388,7 @@ public class Arena : MonoBehaviour
         if (timeSinceArenaStart >= timeToReevaluateStrategy)
         {
             ReevaluateStrategy();
+            timeToReevaluateStrategy = timeSinceArenaStart + reevaluationFrequency;
         }
     }
 
@@ -407,7 +411,11 @@ public class Arena : MonoBehaviour
         if (committedTime > timeToCommit)
         {
             // We have exceeded the recommended amount of commitment time for the chosen strategies.
-            
+            // Raise intensity of active strategies.
+            foreach (var activeStrategy in activeStrategies)
+            {
+                activeStrategy.intensity += 0.1f;
+            }
             PickNewStrategy();
         }
         // todo Evaluate player's performance and possibly change strategy
@@ -421,8 +429,15 @@ public class Arena : MonoBehaviour
         }
         else
         {
-            //todo PlayASpecialEvent();
-            PickEarlyGameStrategy();
+            if (timeSinceArenaStart > timeToDoASpecialEvent)
+            {
+                PickASpecialEvent();
+                timeToDoASpecialEvent = timeSinceArenaStart + 60f;
+            }
+            else
+            {
+                PickLateGameStrategy();
+            }
         }
     }
 
@@ -434,12 +449,41 @@ public class Arena : MonoBehaviour
         CommitToStrategy(strategy);
     }
 
+    private void PickLateGameStrategy()
+    {
+        var candidates = GetLeastPoliteStrategies(lateGameStrategies);
+        var idx = (int)(candidates.Count * politenessWeightCurve.Evaluate(Random.value));
+        var strategy = candidates[idx];
+        CommitToStrategy(strategy);
+    }
+
+    private void PickASpecialEvent()
+    {
+        // In the interest of time, only one special event exists and it is to pick two early game strategies.
+        var poolToPickFrom = timeSinceArenaStart > 120f ? lateGameStrategies : earlyGameStrategies;
+        var candidates = GetLeastPoliteStrategies(poolToPickFrom);
+        var idx1 = (int)(candidates.Count * politenessWeightCurve.Evaluate(Random.value));
+        var strategy1 = candidates[idx1];
+        candidates.RemoveAt(idx1);
+        var idx2 = (int)(candidates.Count * politenessWeightCurve.Evaluate(Random.value));
+        var strategy2 = candidates[idx2];
+        CommitToStrategies(strategy1, strategy2);
+    }
+
     private void CommitToStrategy(SpawnStrategy strategy)
     {
         activeStrategies.Clear();
         activeStrategies.Add(strategy);
         committedTime = 0;
-        timeToCommit += strategy.GetCommitmentTime();
+        timeToCommit = strategy.GetCommitmentTime();
+    }
+    
+    private void CommitToStrategies(params SpawnStrategy[] strategies)
+    {
+        activeStrategies.Clear();
+        activeStrategies.AddRange(strategies);
+        committedTime = 0;
+        timeToCommit = strategies.Min(s => s.GetCommitmentTime());
     }
 
     private void CommitToRest(float time)

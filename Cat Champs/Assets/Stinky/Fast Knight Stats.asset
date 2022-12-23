@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0523edcffd0e84f8243a66faff0d09, type: 3}
   m_Name: Fast Knight Stats
   m_EditorClassIdentifier: 
-  health: 20
+  health: 18
   speed: 5
   acceleration: 1
   attackCooldownMod: 1

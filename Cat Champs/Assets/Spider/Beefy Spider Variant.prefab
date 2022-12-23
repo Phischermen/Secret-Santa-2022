@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 8163748366601897671, guid: 98a96f222411dfd42afc7586395afece, type: 3}
+    - target: {fileID: 1186447233178020285, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: attackCooldown
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2793529034697314161, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
       propertyPath: baseStats
       value: 
@@ -35,6 +39,30 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8867924
       objectReference: {fileID: 0}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.data[5]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.data[6]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.data[7]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.data[8]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: xpDrops.Array.data[9]
+      value: 
+      objectReference: {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
     - target: {fileID: 5510520217463515262, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
       propertyPath: m_RootOrder
       value: 0
