@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ExperiencePoint : MonoBehaviour
 {
+    public AudioSource collectSound;
     private bool _triggered;
     public int points;
     private void OnTriggerEnter2D(Collider2D col)
@@ -19,6 +20,7 @@ public class ExperiencePoint : MonoBehaviour
             {
                 Destroy(gameObject);
             });
+            collectSound.Play();
         }
     }
 }

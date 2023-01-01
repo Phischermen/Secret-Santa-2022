@@ -17,7 +17,7 @@ public class SwordAttack : ActorAttack, IUpgrades
 
     public float swingDuration = 0.5f;
     public float growDuration = 0.2f;
-    
+
     public TrailRenderer trail;
 
     private void Start()

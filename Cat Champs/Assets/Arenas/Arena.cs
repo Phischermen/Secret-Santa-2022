@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class Arena : MonoBehaviour
@@ -395,6 +396,7 @@ public class Arena : MonoBehaviour
     private List<(float time, int damage)> _damageHistory = new();
     private void StartArena()
     {
+        firstTimeMode = PlayerPrefs.GetInt("firstTimeMode", 1) == 1;
         GameplayState.GetPlayer().health.OnDamageTaken += (_, damage) =>
         {
             _damageHistory.Add((timeSinceArenaStart, damage));
@@ -403,6 +405,18 @@ public class Arena : MonoBehaviour
         {
             // Do not spawn anything for a little while.
             CommitToRest(5f);
+            firstTimeMode = false;
+            PlayerPrefs.SetInt("firstTimeMode", 0);
+            DOTween.Sequence(this).AppendCallback(() =>
+                TextPopup.Create("Welcome to the arena!", Color.white, GameplayState.GetPlayer().transform.position))
+                .AppendInterval(1f)
+                .AppendCallback(() =>
+                    TextPopup.Create("You can move around with WASD and attack with the mouse.", Color.white,
+                        GameplayState.GetPlayer().transform.position))
+                .AppendInterval(1f)
+                .AppendCallback(() =>
+                    TextPopup.Create("Survive as long as you can!", Color.white,
+                        GameplayState.GetPlayer().transform.position));
         }
         else
         {

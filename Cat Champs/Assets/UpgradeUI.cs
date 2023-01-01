@@ -11,6 +11,7 @@ public class UpgradeUI : MonoBehaviour
     public List<TextMeshProUGUI> upgradeTexts;
     public List<Button> upgradeButtons;
     public VerticalLayoutGroup layoutGroup;
+    public AudioSource audioSource;
     public void Initialize(GameplayState gameplayState)
     {
         _gameplayState = gameplayState;
@@ -20,6 +21,7 @@ public class UpgradeUI : MonoBehaviour
     private List<Upgrade> _upgrades;
     public void ShowUpgradeUI(List<Upgrade> upgrades)
     {
+        audioSource.Play();
         _upgrades = upgrades;
         gameObject.SetActive(true);
         // Animate all buttons in.

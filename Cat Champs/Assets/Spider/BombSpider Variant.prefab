@@ -4911,6 +4911,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2e8716e53a77b294daced4787eadf702, type: 3}
+    - target: {fileID: 4101600588904948423, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5510520217463515262, guid: cfc3f32f4fb111349a3dbea899bb227f, type: 3}
       propertyPath: m_RootOrder
       value: 0

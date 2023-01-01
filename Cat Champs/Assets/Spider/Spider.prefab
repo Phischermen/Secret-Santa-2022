@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   useIframes: 0
+  hurtSound: {fileID: 8300000, guid: 60438f8be2db20e44a3144aaad663988, type: 3}
+  deathSound: {fileID: 8300000, guid: 60438f8be2db20e44a3144aaad663988, type: 3}
   xpDrops:
   - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}
   - {fileID: 7725427396688774444, guid: 7470ab9782c2d2546a1982672842cd14, type: 3}

@@ -27,6 +27,9 @@ public class HealthManager : MonoBehaviour
     
     public event Action<HealthManager, int> OnDamageTaken;
     public event Action<Actor> HealthDepleted;
+
+    public AudioClip hurtSound;
+    public AudioClip deathSound;
     
     public void Initialize(Actor owner)
     {
@@ -47,9 +50,14 @@ public class HealthManager : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position);
             CurrentHealth = 0;
             HealthDepleted?.Invoke(owner);
             HealthDepletedInternal();
+        }
+        else
+        {
+            if (hurtSound) AudioSource.PlayClipAtPoint(hurtSound, transform.position);
         }
     }
     

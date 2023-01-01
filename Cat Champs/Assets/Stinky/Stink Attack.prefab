@@ -44,6 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d393554f4e2b4d4b9a1e29da485cfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usesMouseTargeting: 0
+  usesMotionTargeting: 0
+  isPassive: 0
   attacker: {fileID: 0}
   attackCooldown: 1
   projectile: {fileID: 7339585373482352571, guid: 058cbb21b1a850349919b0d3305853b0, type: 3}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 0
+  bonusDamage: 0
+  sound: {fileID: 8300000, guid: 1ba2fddb7d5093f4b9d67ec5457b5fea, type: 3}

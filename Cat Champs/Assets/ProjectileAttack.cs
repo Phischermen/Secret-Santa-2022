@@ -9,6 +9,7 @@ public class ProjectileAttack : ActorAttack, IUpgrades
     public GameObject projectile;
     public LayerMask hitMask;
     public int bonusDamage;
+    
 
     private void Start()
     {

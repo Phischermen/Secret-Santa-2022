@@ -77,8 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211a6c502c1423c4cb394a5d836b5178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usesMouseTargeting: 0
+  usesMotionTargeting: 0
+  isPassive: 0
   attacker: {fileID: 0}
   attackCooldown: 0.1
+  sound: {fileID: 8300000, guid: 377fe49b6b58e2144a34c2eb46cd96b0, type: 3}
   range: 2
   arc: 45
   damage: 10

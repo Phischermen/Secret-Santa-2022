@@ -14,6 +14,7 @@ public class PlayerUI : MonoBehaviour
     
     public Image xpBar;
     public Image healthBar;
+    
     public void Initialize(PlayerActor playerActor)
     {
         _playerActor = playerActor;

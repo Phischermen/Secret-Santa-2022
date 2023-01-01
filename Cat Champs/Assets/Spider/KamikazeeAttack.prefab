@@ -82,6 +82,7 @@ MonoBehaviour:
   isPassive: 0
   attacker: {fileID: 0}
   attackCooldown: 0
+  sound: {fileID: 8300000, guid: eaf69433ceafe16499d0f344a6a7993c, type: 3}
   destroyObjectWhenAnimationFinished: 0
   range: 2
   damage: 1

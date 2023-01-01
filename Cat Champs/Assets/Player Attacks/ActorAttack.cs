@@ -17,6 +17,8 @@ public abstract class ActorAttack : MonoBehaviour
     protected float timeSinceLastAttack => Time.time - timeOfLastAttack;
     
     public event Action AttackPerformed;
+    
+    public AudioClip sound;
 
     public void PerformAttack(Vector2 direction)
     {
@@ -24,6 +26,7 @@ public abstract class ActorAttack : MonoBehaviour
         if (timeSinceLastAttack >= cooldown)
         {
             timeOfLastAttack = Time.time;
+            if (sound) AudioSource.PlayClipAtPoint(sound, transform.position);
             AttackPerformed?.Invoke();
             PerformAttackInternal(direction);
         }
